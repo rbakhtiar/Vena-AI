@@ -2,39 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Vena AI</title>
+<title>Vena AI Ultra Pro</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin:0;
-  font-family:Arial;
-  background:#0a0a0a;
-  color:white;
-  display:flex;
+  font-family: Arial;
   height:100vh;
-}
-
-/* SIDEBAR */
-.sidebar {
-  width:260px;
-  background:linear-gradient(180deg,#00f5d4,#7b2ff7);
-  color:black;
-  padding:10px;
   display:flex;
-  flex-direction:column;
-}
-
-.sidebar h2 {
-  margin:5px 0;
-}
-
-.chat-item {
-  background:black;
+  overflow:hidden;
   color:white;
-  padding:6px;
-  margin:4px 0;
-  border-radius:6px;
+  background: linear-gradient(-45deg,#0f0c29,#302b63,#00f5d4,#7b2ff7,#ff4ecd);
+  background-size:400% 400%;
+  animation: bg 12s ease infinite;
+}
+
+@keyframes bg {
+  0% {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100% {background-position:0% 50%}
+}
+
+/* LEFT CHAT HISTORY */
+.left {
+  width:220px;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(12px);
+  padding:10px;
+  overflow:auto;
+}
+
+.item {
+  background:#111;
+  padding:8px;
+  margin:5px 0;
+  border-radius:8px;
   cursor:pointer;
 }
 
@@ -45,7 +48,6 @@ body {
   flex-direction:column;
 }
 
-/* CHAT */
 #chat {
   flex:1;
   padding:10px;
@@ -53,225 +55,255 @@ body {
 }
 
 .msg {
-  margin:6px;
-  padding:10px;
-  border-radius:10px;
-  max-width:70%;
+  margin:8px;
+  padding:12px;
+  border-radius:12px;
+  max-width:75%;
+  white-space:pre-wrap;
 }
 
-.user {
-  background:#00f5d4;
-  color:black;
-  margin-left:auto;
-}
-
-.ai {
-  background:#7b2ff7;
-}
+.user { background:#00f5d4; color:black; margin-left:auto; }
+.ai { background:#7b2ff7; }
 
 /* INPUT */
-.input-area {
+.input {
   display:flex;
-  padding:10px;
   gap:5px;
+  padding:10px;
+  background:rgba(0,0,0,0.35);
 }
 
-input[type="text"] {
+input {
   flex:1;
   padding:10px;
   border:none;
+  border-radius:8px;
 }
 
 button {
   padding:10px;
-  background:#111;
-  color:white;
   border:none;
+  border-radius:8px;
+  background:#00f5d4;
   cursor:pointer;
+}
+
+/* RIGHT SETTINGS */
+.right {
+  width:260px;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(12px);
+  padding:10px;
+}
+
+small { color:#ccc; }
+
+img {
+  max-width:180px;
+  border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <h2>Vena AI</h2>
-
-  <p id="userInfo">Guest</p>
-
-  <button onclick="newChat()">+ New Chat</button>
-  <button onclick="openSettings()">Settings</button>
-  <button onclick="clearAll()">Reset All</button>
-
-  <div id="chatList"></div>
+<!-- LEFT -->
+<div class="left">
+  <h3>Chats</h3>
+  <button onclick="newChat()">New</button>
+  <div id="history"></div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
-  <div id="chat"></div>
+<div id="chat"></div>
 
-  <div class="input-area">
-    <input type="text" id="text" placeholder="Ask anything...">
-    <input type="file" id="image">
-    <button onclick="send()">Send</button>
-    <button onclick="voice()">🎤</button>
-  </div>
+<div class="input">
+  <input id="text" placeholder="Ask anything...">
+  <input type="file" id="img">
+  <button onclick="voice()">🎤</button>
+  <button onclick="send()">Send</button>
+  <button onclick="speak()">🔊</button>
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+<h3>Account</h3>
+
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+
+<button onclick="saveProfile()">Save</button>
+<button onclick="logout()">Logout</button>
+
+<p id="userInfo">Not logged in</p>
+
+<hr>
+
+<h3>Modes</h3>
+<button onclick="setMode('chatgpt')">ChatGPT</button>
+<button onclick="setMode('claude')">Claude</button>
+<button onclick="setMode('grok')">Grok</button>
+<button onclick="setMode('perplexity')">Perplexity</button>
+<button onclick="setMode('gemini')">Gemini</button>
+<button onclick="setMode('deepseek')">DeepSeek</button>
 
 </div>
 
 <script>
 
-/* ===== STATE ===== */
-let chats = JSON.parse(localStorage.getItem("vena_chats")) || {};
-let current = "default";
-let user = JSON.parse(localStorage.getItem("vena_user")) || {name:"Guest", age:"?"};
+let chat = document.getElementById("chat");
+let mode = "chatgpt";
 
-chats[current] = chats[current] || [];
+/* USER */
+let user = JSON.parse(localStorage.getItem("vena_user")) || null;
 
-/* SAVE */
-function save() {
-  localStorage.setItem("vena_chats", JSON.stringify(chats));
-  localStorage.setItem("vena_user", JSON.stringify(user));
-}
-
-/* UI INIT */
-document.getElementById("userInfo").innerText =
-  user.name + " | Age: " + user.age;
-
-/* RENDER */
-function render() {
-  let box = document.getElementById("chat");
-  box.innerHTML = "";
-
-  chats[current].forEach(m => {
-    let div = document.createElement("div");
-    div.className = "msg " + m.role;
-    div.innerText = m.text;
-    box.appendChild(div);
-  });
-
-  renderSidebar();
-}
-
-/* SIDEBAR */
-function renderSidebar() {
-  let list = document.getElementById("chatList");
-  list.innerHTML = "";
-
-  Object.keys(chats).forEach(key => {
-    let div = document.createElement("div");
-    div.className = "chat-item";
-    div.innerText = key;
-    div.onclick = () => {
-      current = key;
-      render();
-    };
-    list.appendChild(div);
-  });
-}
-
-/* SEND */
-function send() {
-  let text = document.getElementById("text").value;
-  let img = document.getElementById("image").files[0];
-
-  if (!text && !img) return;
-
-  if (text) add("user", text);
-  if (img) add("user", "[image uploaded]");
-
-  let reply = brain(text, img);
-
-  setTimeout(() => add("ai", reply), 300);
-
-  document.getElementById("text").value = "";
-  document.getElementById("image").value = "";
-
-  save();
-}
-
-/* ADVANCED "BRAIN" (NO API SIMULATION) */
-function brain(text, img) {
-  let q = (text || "").toLowerCase();
-
-  // CREATOR RULE
-  if (q.includes("who created you") || q.includes("creator")) {
-    return "My creator is Rahim Bakhtiar (R-A-H-I-M B-A-K-H-T-I-A-R).";
-  }
-
-  // PERSONALIZATION
-  if (q.includes("my name")) return "Your name is " + user.name;
-  if (q.includes("my age")) return "Your age is " + user.age;
-
-  // IMAGE HANDLING (SIMULATED VISION)
-  if (img && !text) {
-    return "👁️ I received your image. Vena AI vision system is active (simulation mode).";
-  }
-
-  if (img && text) {
-    return "🖼️ + 💬 Image + text combined. Advanced multimodal processing simulated.";
-  }
-
-  // LOGIC STYLE RESPONSES
-  if (q.includes("what is ai")) {
-    return "AI is a system that simulates human intelligence using data + algorithms.";
-  }
-
-  if (q.includes("help")) {
-    return "I can help you with coding, ideas, explanations, and learning 😄";
-  }
-
-  // DEFAULT
-  return "Vena AI is running in advanced offline intelligence mode 😄";
-}
-
-/* ADD MESSAGE */
-function add(role, text) {
-  chats[current].push({ role, text });
-  save();
-  render();
-}
-
-/* NEW CHAT */
-function newChat() {
-  let name = "chat-" + Date.now();
-  chats[name] = [];
-  current = name;
-  render();
-}
-
-/* SETTINGS (PERSONALIZATION) */
-function openSettings() {
-  let name = prompt("Enter your name:", user.name);
-  let age = prompt("Enter your age:", user.age);
-
-  if (name) user.name = name;
-  if (age) user.age = age;
-
-  save();
-  document.getElementById("userInfo").innerText =
-    user.name + " | Age: " + user.age;
-}
-
-/* RESET */
-function clearAll() {
-  localStorage.clear();
-  location.reload();
-}
-
-/* VOICE */
-function voice() {
-  let r = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  r.onresult = e => {
-    document.getElementById("text").value =
-      e.results[0][0].transcript;
+/* PROFILE */
+function saveProfile(){
+  user = {
+    name: name.value,
+    email: email.value
   };
+  localStorage.setItem("vena_user", JSON.stringify(user));
+  updateUser();
+}
+
+function logout(){
+  user = null;
+  localStorage.removeItem("vena_user");
+  updateUser();
+}
+
+function updateUser(){
+  document.getElementById("userInfo").innerText =
+    user ? user.name + " | " + user.email : "Not logged in";
+}
+
+updateUser();
+
+/* MODE */
+function setMode(m){ mode = m; }
+
+/* SPEECH */
+function voice(){
+  let r = new webkitSpeechRecognition();
+  r.onresult = e => text.value = e.results[0][0].transcript;
   r.start();
 }
 
-render();
+function speak(){
+  let s = new SpeechSynthesisUtterance(chat.lastChild?.innerText || "");
+  speechSynthesis.speak(s);
+}
+
+/* MAIN ENGINE */
+function brain(text){
+
+  let q = (text||"").toLowerCase();
+
+  if(q.includes("who created you")){
+    return "My creator is Rahim Bakhtiar (R-A-H-I-M B-A-K-H-T-I-A-R).";
+  }
+
+  return apiLayer(q);
+}
+
+/* 🔌 FAKE API LAYER (MOST REALISTIC PART) */
+function apiLayer(q){
+
+  let latency = Math.floor(Math.random()*800+200);
+  let result = engine(q);
+
+  return `
+────────────────────
+🔌 VENA AI API CALL
+status: 200 OK
+model: vena-ultra-core
+latency: ${latency}ms
+auth: VENA-KEY-VALID
+
+⏳ processing...
+
+${result}
+
+────────────────────
+✔ stream complete
+`;
+}
+
+/* 🧠 MULTI-MODE ENGINE */
+function engine(q){
+
+  let base = core(q);
+
+  switch(mode){
+
+    case "chatgpt": return style("ChatGPT", base);
+    case "claude": return style("Claude", deep(base));
+    case "grok": return style("Grok", fast(base));
+    case "perplexity": return style("Perplexity", search(base));
+    case "gemini": return style("Gemini", balanced(base));
+    case "deepseek": return style("DeepSeek", structured(base));
+
+  }
+
+  return base;
+}
+
+/* CORE INTELLIGENCE */
+function core(q){
+
+  if(q.includes("ai")) return "AI simulates intelligence using data patterns.";
+  if(q.includes("future")) return "Future depends on technology + human evolution.";
+  if(q.includes("internet")) return "Internet connects global systems.";
+  if(q.includes("code")) return "Code controls computers via logic.";
+
+  return "Vena AI is processing your request with advanced simulation.";
+}
+
+/* STYLE LAYERS */
+function deep(t){ return "Step-by-step reasoning:\n1...2...3...\n\n"+t; }
+function fast(t){ return "⚡ Quick insight:\n"+t; }
+function search(t){ return "✔ Answer:\n"+t+"\n📚 Context simulated"; }
+function balanced(t){ return "Balanced view:\n"+t; }
+function structured(t){ return "{ response: '"+t+"' }"; }
+
+function style(name,t){
+  return "🧠 "+name+" Mode\n\n"+t;
+}
+
+/* SEND */
+function send(){
+  let text = document.getElementById("text").value;
+  let img = document.getElementById("img").files[0];
+
+  if(!text && !img) return;
+
+  add("user", text || "[image]");
+
+  if(img){
+    let r = new FileReader();
+    r.onload = e => add("user", "<image uploaded>");
+    r.readAsDataURL(img);
+  }
+
+  setTimeout(()=>add("ai", brain(text)), 300);
+
+  text.value="";
+}
+
+/* CHAT */
+function add(role,text){
+  let div=document.createElement("div");
+  div.className="msg "+role;
+  div.innerText=text;
+  chat.appendChild(div);
+  chat.scrollTop=chat.scrollHeight;
+}
 
 </script>
 
