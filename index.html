@@ -2,308 +2,272 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Vena AI Ultra Pro</title>
+<title>VENA AI</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin:0;
-  font-family: Arial;
-  height:100vh;
-  display:flex;
-  overflow:hidden;
-  color:white;
-  background: linear-gradient(-45deg,#0f0c29,#302b63,#00f5d4,#7b2ff7,#ff4ecd);
-  background-size:400% 400%;
-  animation: bg 12s ease infinite;
+:root{
+  --bg:#0b0f19;
+  --panel:#111827;
+  --text:#ffffff;
+  --ai:#1f2937;
+  --user:#00f5d4;
 }
 
-@keyframes bg {
-  0% {background-position:0% 50%}
-  50% {background-position:100% 50%}
-  100% {background-position:0% 50%}
+.light{
+  --bg:#f6f7fb;
+  --panel:#ffffff;
+  --text:#111;
+  --ai:#e5e7eb;
+  --user:#00c2a8;
 }
 
-/* LEFT CHAT HISTORY */
-.left {
-  width:220px;
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(12px);
-  padding:10px;
-  overflow:auto;
+body{
+margin:0;
+height:100vh;
+display:flex;
+font-family:system-ui;
+background:var(--bg);
+color:var(--text);
+transition:0.3s;
 }
 
-.item {
-  background:#111;
-  padding:8px;
-  margin:5px 0;
-  border-radius:8px;
-  cursor:pointer;
+/* SIDEBAR */
+.sidebar{
+width:260px;
+background:var(--panel);
+padding:12px;
+display:flex;
+flex-direction:column;
+}
+
+.brand{
+font-weight:700;
+margin-bottom:10px;
+}
+
+.chatItem{
+padding:10px;
+margin:5px 0;
+background:rgba(0,0,0,0.05);
+border-radius:8px;
+cursor:pointer;
 }
 
 /* MAIN */
-.main {
-  flex:1;
-  display:flex;
-  flex-direction:column;
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
 }
 
-#chat {
-  flex:1;
-  padding:10px;
-  overflow:auto;
+/* CHAT */
+#chat{
+flex:1;
+padding:18px;
+overflow:auto;
 }
 
-.msg {
-  margin:8px;
-  padding:12px;
-  border-radius:12px;
-  max-width:75%;
-  white-space:pre-wrap;
+.msg{
+max-width:75%;
+padding:12px;
+margin:10px 0;
+border-radius:12px;
+white-space:pre-wrap;
+line-height:1.4;
+animation:fade 0.2s ease;
 }
 
-.user { background:#00f5d4; color:black; margin-left:auto; }
-.ai { background:#7b2ff7; }
+@keyframes fade{
+from{opacity:0;transform:translateY(6px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.user{background:var(--user);color:black;margin-left:auto}
+.ai{background:var(--ai)}
 
 /* INPUT */
-.input {
-  display:flex;
-  gap:5px;
-  padding:10px;
-  background:rgba(0,0,0,0.35);
+.inputBar{
+display:flex;
+padding:12px;
+background:var(--panel);
+gap:8px;
+align-items:center;
 }
 
-input {
-  flex:1;
-  padding:10px;
-  border:none;
-  border-radius:8px;
+input{
+flex:1;
+padding:12px;
+border:none;
+border-radius:10px;
+background:transparent;
+color:var(--text);
+outline:none;
 }
 
-button {
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  background:#00f5d4;
-  cursor:pointer;
+button{
+padding:10px 14px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+background:var(--user);
 }
 
-/* RIGHT SETTINGS */
-.right {
-  width:260px;
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(12px);
-  padding:10px;
+/* MIC */
+.mic{
+width:42px;
+height:42px;
+border-radius:10px;
+background:rgba(0,0,0,0.08);
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
 }
 
-small { color:#ccc; }
-
-img {
-  max-width:180px;
-  border-radius:10px;
+.topbar{
+display:flex;
+justify-content:space-between;
+padding:10px;
+background:var(--panel);
 }
 </style>
 </head>
 
 <body>
 
-<!-- LEFT -->
-<div class="left">
-  <h3>Chats</h3>
-  <button onclick="newChat()">New</button>
-  <div id="history"></div>
+<!-- SIDEBAR -->
+<div class="sidebar">
+<div class="brand">VENA AI</div>
+<button onclick="toggleMode()">🌗 Mode</button>
+<button onclick="newChat()">+ New Chat</button>
+<div id="list"></div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
+<div class="topbar">
+<div>Chat</div>
+<div onclick="clearAll()" style="cursor:pointer">Clear</div>
+</div>
+
 <div id="chat"></div>
 
-<div class="input">
-  <input id="text" placeholder="Ask anything...">
-  <input type="file" id="img">
-  <button onclick="voice()">🎤</button>
-  <button onclick="send()">Send</button>
-  <button onclick="speak()">🔊</button>
-</div>
+<div class="inputBar">
+
+<div class="mic" onclick="voice()">🎤</div>
+
+<input id="text" placeholder="Ask anything..." onkeydown="if(event.key==='Enter')send()">
+
+<button onclick="send()">➤</button>
 
 </div>
-
-<!-- RIGHT -->
-<div class="right">
-
-<h3>Account</h3>
-
-<input id="name" placeholder="Name">
-<input id="email" placeholder="Email">
-
-<button onclick="saveProfile()">Save</button>
-<button onclick="logout()">Logout</button>
-
-<p id="userInfo">Not logged in</p>
-
-<hr>
-
-<h3>Modes</h3>
-<button onclick="setMode('chatgpt')">ChatGPT</button>
-<button onclick="setMode('claude')">Claude</button>
-<button onclick="setMode('grok')">Grok</button>
-<button onclick="setMode('perplexity')">Perplexity</button>
-<button onclick="setMode('gemini')">Gemini</button>
-<button onclick="setMode('deepseek')">DeepSeek</button>
 
 </div>
 
 <script>
 
-let chat = document.getElementById("chat");
-let mode = "chatgpt";
-
-/* USER */
-let user = JSON.parse(localStorage.getItem("vena_user")) || null;
-
-/* PROFILE */
-function saveProfile(){
-  user = {
-    name: name.value,
-    email: email.value
-  };
-  localStorage.setItem("vena_user", JSON.stringify(user));
-  updateUser();
-}
-
-function logout(){
-  user = null;
-  localStorage.removeItem("vena_user");
-  updateUser();
-}
-
-function updateUser(){
-  document.getElementById("userInfo").innerText =
-    user ? user.name + " | " + user.email : "Not logged in";
-}
-
-updateUser();
+let chat=document.getElementById("chat");
+let chats={};
+let current="default";
+chats[current]=[];
 
 /* MODE */
-function setMode(m){ mode = m; }
-
-/* SPEECH */
-function voice(){
-  let r = new webkitSpeechRecognition();
-  r.onresult = e => text.value = e.results[0][0].transcript;
-  r.start();
+function toggleMode(){
+document.body.classList.toggle("light");
 }
 
-function speak(){
-  let s = new SpeechSynthesisUtterance(chat.lastChild?.innerText || "");
-  speechSynthesis.speak(s);
+/* CHAT SYSTEM */
+function newChat(){
+current="chat_"+Date.now();
+chats[current]=[];
+render();
+chat.innerHTML="";
 }
 
-/* MAIN ENGINE */
-function brain(text){
-
-  let q = (text||"").toLowerCase();
-
-  if(q.includes("who created you")){
-    return "My creator is Rahim Bakhtiar (R-A-H-I-M B-A-K-H-T-I-A-R).";
-  }
-
-  return apiLayer(q);
+function render(){
+list.innerHTML="";
+for(let c in chats){
+let d=document.createElement("div");
+d.className="chatItem";
+d.innerText=c;
+d.onclick=()=>load(c);
+list.appendChild(d);
+}
 }
 
-/* 🔌 FAKE API LAYER (MOST REALISTIC PART) */
-function apiLayer(q){
-
-  let latency = Math.floor(Math.random()*800+200);
-  let result = engine(q);
-
-  return `
-────────────────────
-🔌 VENA AI API CALL
-status: 200 OK
-model: vena-ultra-core
-latency: ${latency}ms
-auth: VENA-KEY-VALID
-
-⏳ processing...
-
-${result}
-
-────────────────────
-✔ stream complete
-`;
+function load(id){
+current=id;
+chat.innerHTML="";
+chats[id].forEach(m=>add(m.role,m.text));
 }
 
-/* 🧠 MULTI-MODE ENGINE */
-function engine(q){
+/* AI ENGINE */
+function brain(t){
+t=t.toLowerCase();
 
-  let base = core(q);
-
-  switch(mode){
-
-    case "chatgpt": return style("ChatGPT", base);
-    case "claude": return style("Claude", deep(base));
-    case "grok": return style("Grok", fast(base));
-    case "perplexity": return style("Perplexity", search(base));
-    case "gemini": return style("Gemini", balanced(base));
-    case "deepseek": return style("DeepSeek", structured(base));
-
-  }
-
-  return base;
+if(t.includes("who created you")){
+return "My creator is Rahim Bakhtiar.";
 }
 
-/* CORE INTELLIGENCE */
-function core(q){
-
-  if(q.includes("ai")) return "AI simulates intelligence using data patterns.";
-  if(q.includes("future")) return "Future depends on technology + human evolution.";
-  if(q.includes("internet")) return "Internet connects global systems.";
-  if(q.includes("code")) return "Code controls computers via logic.";
-
-  return "Vena AI is processing your request with advanced simulation.";
+if(t.includes("ai")){
+return "AI simulates human intelligence using data and patterns.";
 }
 
-/* STYLE LAYERS */
-function deep(t){ return "Step-by-step reasoning:\n1...2...3...\n\n"+t; }
-function fast(t){ return "⚡ Quick insight:\n"+t; }
-function search(t){ return "✔ Answer:\n"+t+"\n📚 Context simulated"; }
-function balanced(t){ return "Balanced view:\n"+t; }
-function structured(t){ return "{ response: '"+t+"' }"; }
+if(t.includes("future")){
+return "The future depends on technology and human decisions.";
+}
 
-function style(name,t){
-  return "🧠 "+name+" Mode\n\n"+t;
+if(t.includes("code")){
+return "Code is structured instructions that run software systems.";
+}
+
+return "VENA AI processed your request with structured reasoning.";
 }
 
 /* SEND */
 function send(){
-  let text = document.getElementById("text").value;
-  let img = document.getElementById("img").files[0];
+let t=text.value;
+if(!t)return;
 
-  if(!text && !img) return;
+add("user",t);
+let res=brain(t);
+add("ai",res);
 
-  add("user", text || "[image]");
+if(!chats[current])chats[current]=[];
+chats[current].push({role:"user",text:t});
+chats[current].push({role:"ai",text:res});
 
-  if(img){
-    let r = new FileReader();
-    r.onload = e => add("user", "<image uploaded>");
-    r.readAsDataURL(img);
-  }
-
-  setTimeout(()=>add("ai", brain(text)), 300);
-
-  text.value="";
+text.value="";
+render();
 }
 
-/* CHAT */
-function add(role,text){
-  let div=document.createElement("div");
-  div.className="msg "+role;
-  div.innerText=text;
-  chat.appendChild(div);
-  chat.scrollTop=chat.scrollHeight;
+/* UI */
+function add(r,t){
+let d=document.createElement("div");
+d.className="msg "+r;
+d.innerText=t;
+chat.appendChild(d);
+chat.scrollTop=chat.scrollHeight;
 }
+
+/* VOICE */
+function voice(){
+let r=new webkitSpeechRecognition();
+r.onresult=e=>{
+text.value=e.results[0][0].transcript;
+};
+r.start();
+}
+
+/* CLEAR */
+function clearAll(){
+chat.innerHTML="";
+}
+
+render();
 
 </script>
 
