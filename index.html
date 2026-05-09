@@ -2,135 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>VENA AI</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vena AI</title>
 
 <style>
-:root{
-  --bg:#0b0f19;
-  --panel:#111827;
-  --text:#ffffff;
-  --ai:#1f2937;
-  --user:#00f5d4;
-}
-
-.light{
-  --bg:#f6f7fb;
-  --panel:#ffffff;
-  --text:#111;
-  --ai:#e5e7eb;
-  --user:#00c2a8;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-margin:0;
-height:100vh;
-display:flex;
-font-family:system-ui;
-background:var(--bg);
-color:var(--text);
-transition:0.3s;
+  font-family:Arial,sans-serif;
+  background:#0a0a0a;
+  color:white;
+  display:flex;
+  height:100vh;
+  overflow:hidden;
 }
 
 /* SIDEBAR */
 .sidebar{
-width:260px;
-background:var(--panel);
-padding:12px;
-display:flex;
-flex-direction:column;
+  width:260px;
+  background:linear-gradient(180deg,#00f5d4,#7b2ff7);
+  padding:12px;
+  color:black;
+  display:flex;
+  flex-direction:column;
 }
 
-.brand{
-font-weight:700;
-margin-bottom:10px;
+.logo{
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:10px;
 }
 
-.chatItem{
-padding:10px;
-margin:5px 0;
-background:rgba(0,0,0,0.05);
-border-radius:8px;
-cursor:pointer;
+.userbox{
+  background:rgba(255,255,255,0.25);
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.sidebar button{
+  padding:10px;
+  border:none;
+  margin:4px 0;
+  cursor:pointer;
+  border-radius:8px;
+  background:#111;
+  color:white;
+  transition:0.2s;
+}
+
+.sidebar button:hover{
+  transform:scale(1.03);
+}
+
+/* CHAT LIST */
+.chat-list{
+  margin-top:10px;
+  overflow:auto;
+  flex:1;
+}
+
+.chat-item{
+  background:black;
+  color:white;
+  padding:8px;
+  margin:4px 0;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 /* MAIN */
 .main{
-flex:1;
-display:flex;
-flex-direction:column;
+  flex:1;
+  display:flex;
+  flex-direction:column;
 }
 
 /* CHAT */
 #chat{
-flex:1;
-padding:18px;
-overflow:auto;
+  flex:1;
+  overflow-y:auto;
+  padding:15px;
 }
 
 .msg{
-max-width:75%;
-padding:12px;
-margin:10px 0;
-border-radius:12px;
-white-space:pre-wrap;
-line-height:1.4;
-animation:fade 0.2s ease;
+  padding:12px;
+  margin:8px 0;
+  border-radius:12px;
+  max-width:75%;
+  line-height:1.4;
+  word-wrap:break-word;
 }
 
-@keyframes fade{
-from{opacity:0;transform:translateY(6px)}
-to{opacity:1;transform:translateY(0)}
+.user{
+  background:#00f5d4;
+  color:black;
+  margin-left:auto;
 }
 
-.user{background:var(--user);color:black;margin-left:auto}
-.ai{background:var(--ai)}
-
-/* INPUT */
-.inputBar{
-display:flex;
-padding:12px;
-background:var(--panel);
-gap:8px;
-align-items:center;
+.ai{
+  background:#7b2ff7;
 }
 
-input{
-flex:1;
-padding:12px;
-border:none;
-border-radius:10px;
-background:transparent;
-color:var(--text);
-outline:none;
+/* INPUT AREA */
+.input-area{
+  padding:10px;
+  display:flex;
+  gap:5px;
+  border-top:1px solid #222;
 }
 
-button{
-padding:10px 14px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:600;
-background:var(--user);
+.input-area input[type="text"]{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#111;
+  color:white;
 }
 
-/* MIC */
-.mic{
-width:42px;
-height:42px;
-border-radius:10px;
-background:rgba(0,0,0,0.08);
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
+.input-area input[type="file"]{
+  color:white;
 }
 
-.topbar{
-display:flex;
-justify-content:space-between;
-padding:10px;
-background:var(--panel);
+.input-area button{
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#00f5d4;
+  color:black;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+img.preview{
+  max-width:220px;
+  border-radius:10px;
+  margin-top:5px;
 }
 </style>
 </head>
@@ -139,132 +151,458 @@ background:var(--panel);
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-<div class="brand">VENA AI</div>
-<button onclick="toggleMode()">🌗 Mode</button>
-<button onclick="newChat()">+ New Chat</button>
-<div id="list"></div>
+
+  <div class="logo">Vena AI</div>
+
+  <div class="userbox">
+    <div id="userinfo">Guest</div>
+  </div>
+
+  <button onclick="newChat()">+ New Chat</button>
+  <button onclick="settings()">⚙ Settings</button>
+  <button onclick="voice()">🎤 Voice</button>
+  <button onclick="clearAll()">🗑 Reset</button>
+
+  <div class="chat-list" id="chatList"></div>
+
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
-<div class="topbar">
-<div>Chat</div>
-<div onclick="clearAll()" style="cursor:pointer">Clear</div>
-</div>
+  <div id="chat"></div>
 
-<div id="chat"></div>
-
-<div class="inputBar">
-
-<div class="mic" onclick="voice()">🎤</div>
-
-<input id="text" placeholder="Ask anything..." onkeydown="if(event.key==='Enter')send()">
-
-<button onclick="send()">➤</button>
-
-</div>
+  <div class="input-area">
+    <input type="text" id="text" placeholder="Ask anything...">
+    <input type="file" id="image" accept="image/*">
+    <button onclick="send()">Send</button>
+  </div>
 
 </div>
 
 <script>
 
-let chat=document.getElementById("chat");
-let chats={};
-let current="default";
-chats[current]=[];
+/* =========================
+   STORAGE + USER
+========================= */
 
-/* MODE */
-function toggleMode(){
-document.body.classList.toggle("light");
+let chats =
+JSON.parse(localStorage.getItem("vena_chats")) || {};
+
+let user =
+JSON.parse(localStorage.getItem("vena_user")) || {
+  name:"Guest",
+  age:"?"
+};
+
+let current = "Main Chat";
+
+if(!chats[current]){
+  chats[current] = [];
 }
 
-/* CHAT SYSTEM */
-function newChat(){
-current="chat_"+Date.now();
-chats[current]=[];
-render();
-chat.innerHTML="";
+document.getElementById("userinfo").innerText =
+`${user.name} | Age: ${user.age}`;
+
+/* =========================
+   SAVE
+========================= */
+
+function save(){
+  localStorage.setItem(
+    "vena_chats",
+    JSON.stringify(chats)
+  );
+
+  localStorage.setItem(
+    "vena_user",
+    JSON.stringify(user)
+  );
 }
+
+/* =========================
+   RENDER CHAT
+========================= */
 
 function render(){
-list.innerHTML="";
-for(let c in chats){
-let d=document.createElement("div");
-d.className="chatItem";
-d.innerText=c;
-d.onclick=()=>load(c);
-list.appendChild(d);
-}
-}
 
-function load(id){
-current=id;
-chat.innerHTML="";
-chats[id].forEach(m=>add(m.role,m.text));
-}
+  let box =
+  document.getElementById("chat");
 
-/* AI ENGINE */
-function brain(t){
-t=t.toLowerCase();
+  box.innerHTML = "";
 
-if(t.includes("who created you")){
-return "My creator is Rahim Bakhtiar.";
-}
+  chats[current].forEach(m => {
 
-if(t.includes("ai")){
-return "AI simulates human intelligence using data and patterns.";
-}
+    let div =
+    document.createElement("div");
 
-if(t.includes("future")){
-return "The future depends on technology and human decisions.";
-}
+    div.className =
+    "msg " + m.role;
 
-if(t.includes("code")){
-return "Code is structured instructions that run software systems.";
-}
+    if(m.image){
 
-return "VENA AI processed your request with structured reasoning.";
+      div.innerHTML =
+      `<div>${m.text || ""}</div>
+      <img class="preview" src="${m.image}">`;
+
+    } else {
+
+      div.innerText = m.text;
+
+    }
+
+    box.appendChild(div);
+
+  });
+
+  box.scrollTop = box.scrollHeight;
+
+  renderSidebar();
 }
 
-/* SEND */
+/* =========================
+   SIDEBAR
+========================= */
+
+function renderSidebar(){
+
+  let list =
+  document.getElementById("chatList");
+
+  list.innerHTML = "";
+
+  Object.keys(chats).forEach(key=>{
+
+    let div =
+    document.createElement("div");
+
+    div.className = "chat-item";
+    div.innerText = key;
+
+    div.onclick = ()=>{
+
+      current = key;
+      render();
+
+    };
+
+    list.appendChild(div);
+
+  });
+
+}
+
+/* =========================
+   SEND
+========================= */
+
 function send(){
-let t=text.value;
-if(!t)return;
 
-add("user",t);
-let res=brain(t);
-add("ai",res);
+  let text =
+  document.getElementById("text").value.trim();
 
-if(!chats[current])chats[current]=[];
-chats[current].push({role:"user",text:t});
-chats[current].push({role:"ai",text:res});
+  let file =
+  document.getElementById("image").files[0];
 
-text.value="";
-render();
+  if(!text && !file) return;
+
+  if(file){
+
+    let reader = new FileReader();
+
+    reader.onload = function(e){
+
+      add("user",text,e.target.result);
+
+      let reply =
+      brain(text,file);
+
+      setTimeout(()=>{
+
+        add("ai",reply);
+
+      },400);
+
+    };
+
+    reader.readAsDataURL(file);
+
+  } else {
+
+    add("user",text);
+
+    let reply =
+    brain(text,null);
+
+    setTimeout(()=>{
+
+      add("ai",reply);
+
+    },400);
+
+  }
+
+  document.getElementById("text").value = "";
+  document.getElementById("image").value = "";
+
 }
 
-/* UI */
-function add(r,t){
-let d=document.createElement("div");
-d.className="msg "+r;
-d.innerText=t;
-chat.appendChild(d);
-chat.scrollTop=chat.scrollHeight;
+/* =========================
+   ADD MESSAGE
+========================= */
+
+function add(role,text,image=null){
+
+  chats[current].push({
+    role,
+    text,
+    image
+  });
+
+  save();
+  render();
+
 }
 
-/* VOICE */
-function voice(){
-let r=new webkitSpeechRecognition();
-r.onresult=e=>{
-text.value=e.results[0][0].transcript;
-};
-r.start();
+/* =========================
+   ADVANCED OFFLINE BRAIN
+========================= */
+
+function brain(text,img){
+
+  let q =
+  (text || "")
+  .toLowerCase()
+  .trim();
+
+  let previous =
+  chats[current]
+  .slice(-5)
+  .map(m=>m.text)
+  .join(" ");
+
+  /* CREATOR */
+
+  if(
+    q.includes("who created you") ||
+    q.includes("creator") ||
+    q.includes("owner")
+  ){
+    return "My creator is Rahim Bakhtiar (R-A-H-I-M B-A-K-H-T-I-A-R).";
+  }
+
+  /* GREETINGS */
+
+  if(
+    q==="hi" ||
+    q==="hello" ||
+    q==="hey"
+  ){
+    return `Hey ${user.name} 😄 What are we building today?`;
+  }
+
+  /* AI */
+
+  if(q.includes("what is ai")){
+    return "Artificial Intelligence is technology designed to simulate reasoning, learning, and language understanding.";
+  }
+
+  /* CODING */
+
+  if(
+    q.includes("html") ||
+    q.includes("css") ||
+    q.includes("javascript") ||
+    q.includes("python") ||
+    q.includes("coding")
+  ){
+    return "Programming combines logic, structure, and problem solving. HTML creates structure, CSS designs interfaces, and JavaScript controls functionality.";
+  }
+
+  /* APP DEV */
+
+  if(
+    q.includes("app") ||
+    q.includes("frontend") ||
+    q.includes("backend") ||
+    q.includes("website")
+  ){
+    return "Modern applications usually combine frontend interfaces, backend systems, databases, authentication, and APIs.";
+  }
+
+  /* IMAGE */
+
+  if(img && !text){
+    return "🖼️ Image uploaded successfully. Vision simulation mode active.";
+  }
+
+  if(img && text){
+    return "🧠 Multimodal mode active — combining image and text processing.";
+  }
+
+  /* SCHOOL */
+
+  if(
+    q.includes("school") ||
+    q.includes("study") ||
+    q.includes("exam")
+  ){
+    return "Balancing projects and studies is difficult, but consistent practice builds strong skills over time.";
+  }
+
+  /* HARDWARE */
+
+  if(
+    q.includes("cpu") ||
+    q.includes("gpu") ||
+    q.includes("hardware")
+  ){
+    return "Hardware refers to physical computer components like processors, graphics cards, memory, cooling systems, and storage.";
+  }
+
+  /* SOFTWARE */
+
+  if(q.includes("software")){
+    return "Software is the collection of code and applications running on computer hardware.";
+  }
+
+  /* MEMORY */
+
+  if(q.includes("my name")){
+    return `Your saved name is ${user.name}.`;
+  }
+
+  if(q.includes("my age")){
+    return `Your saved age is ${user.age}.`;
+  }
+
+  /* MATH */
+
+  try{
+
+    if(/^[0-9+\-*/(). ]+$/.test(q)){
+
+      let result = eval(q);
+
+      return `The result is ${result}`;
+
+    }
+
+  } catch {}
+
+  /* CONTEXT */
+
+  if(
+    previous.includes("app") &&
+    q.includes("how")
+  ){
+    return "If you're talking about your app, the next step is usually improving logic, memory systems, UI polish, and backend architecture.";
+  }
+
+  /* JOKES */
+
+  if(q.includes("joke")){
+    return "Why do developers hate bugs? Because fixing them means the bugs already won once 😭";
+  }
+
+  /* DEFAULT SMART RESPONSES */
+
+  const replies = [
+
+    "Interesting question 😄 Tell me more so I can answer better.",
+
+    "That depends on the situation, but your project direction actually makes sense.",
+
+    "You're thinking like a builder already — iteration matters a lot in technology.",
+
+    "Advanced systems usually solve this using better architecture, optimization, and structured logic.",
+
+    "I understand what you're asking. Real-world systems often handle this with backend services and intelligent processing."
+
+  ];
+
+  return replies[
+    Math.floor(Math.random()*replies.length)
+  ];
+
 }
 
-/* CLEAR */
+/* =========================
+   SETTINGS
+========================= */
+
+function settings(){
+
+  let name =
+  prompt("Enter your name:",user.name);
+
+  let age =
+  prompt("Enter your age:",user.age);
+
+  if(name) user.name = name;
+  if(age) user.age = age;
+
+  save();
+
+  document.getElementById("userinfo").innerText =
+  `${user.name} | Age: ${user.age}`;
+
+}
+
+/* =========================
+   NEW CHAT
+========================= */
+
+function newChat(){
+
+  let name =
+  "Chat-" + Date.now();
+
+  chats[name] = [];
+
+  current = name;
+
+  save();
+  render();
+
+}
+
+/* =========================
+   RESET
+========================= */
+
 function clearAll(){
-chat.innerHTML="";
+
+  if(confirm("Reset all Vena AI data?")){
+
+    localStorage.clear();
+    location.reload();
+
+  }
+
+}
+
+/* =========================
+   VOICE INPUT
+========================= */
+
+function voice(){
+
+  let rec =
+  new (
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition
+  )();
+
+  rec.onresult = function(e){
+
+    document.getElementById("text").value =
+    e.results[0][0].transcript;
+
+  };
+
+  rec.start();
+
 }
 
 render();
