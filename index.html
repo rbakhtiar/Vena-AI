@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Vena AI — Nexus Intelligence</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Vena AI — Omni Intelligence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,241 +13,226 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #0b0d15;
-      color: #e8edf5;
-      display: flex;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0c12;
+      color: #eef2ff;
       height: 100vh;
+      display: flex;
       overflow: hidden;
     }
 
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: #141622; }
-    ::-webkit-scrollbar-thumb { background: #3a3f55; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #5a6e9f; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #141824; }
+    ::-webkit-scrollbar-thumb { background: #3b4259; border-radius: 10px; }
 
-    /* SIDEBAR — ultra premium */
+    /* Sidebar Premium */
     .sidebar {
-      width: 300px;
-      background: rgba(12, 14, 22, 0.96);
+      width: 280px;
+      background: rgba(8, 10, 18, 0.96);
       backdrop-filter: blur(16px);
-      border-right: 1px solid rgba(72, 187, 255, 0.12);
+      border-right: 1px solid rgba(96, 165, 250, 0.15);
       display: flex;
       flex-direction: column;
-      transition: 0.2s;
-      z-index: 10;
+      transition: all 0.2s;
     }
 
-    .logo-area {
-      padding: 28px 20px 16px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+    .logo-section {
+      padding: 28px 20px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .logo {
       font-size: 32px;
       font-weight: 800;
-      background: linear-gradient(125deg, #a78bfa, #3b82f6, #2dd4bf);
+      background: linear-gradient(125deg, #c084fc, #3b82f6, #2dd4bf);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
-    .logo-badge {
-      font-size: 12px;
-      background: rgba(59,130,246,0.2);
-      padding: 2px 8px;
-      border-radius: 40px;
-      color: #60a5fa;
-      font-weight: 500;
+    .badge {
+      font-size: 11px;
+      background: #1e293b;
+      padding: 2px 10px;
+      border-radius: 20px;
+      color: #94a3b8;
+      margin-left: 8px;
     }
 
-    .profile-card {
-      background: linear-gradient(145deg, #10121c, #0a0c14);
-      margin: 20px;
+    .user-card {
+      background: linear-gradient(145deg, #0f111c, #090b12);
+      margin: 20px 16px;
+      padding: 14px;
       border-radius: 24px;
-      padding: 16px;
-      border: 1px solid #252b3d;
+      border: 1px solid #252d42;
     }
-    #userinfo {
-      font-weight: 500;
-      font-size: 0.9rem;
-      color: #cbd5ff;
+    #userNameDisplay {
+      font-weight: 700;
+      font-size: 1rem;
     }
-    .user-detail {
+    .user-status {
       font-size: 0.7rem;
       color: #7e8aad;
       margin-top: 6px;
     }
 
-    .nav-buttons {
+    .action-buttons {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       padding: 0 16px;
       margin-bottom: 24px;
     }
-    .nav-btn {
-      background: #11131f;
+    .action-btn {
+      background: #111522;
       border: none;
-      padding: 12px 16px;
-      border-radius: 16px;
+      padding: 10px 14px;
+      border-radius: 14px;
       color: #e2e8f0;
       font-weight: 500;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 12px;
-      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border: 1px solid #1e2538;
+      transition: 0.2s;
+      border: 1px solid #1e253a;
     }
-    .nav-btn:hover {
-      background: #1b1f32;
-      transform: translateX(4px);
+    .action-btn:hover {
+      background: #1a1f32;
+      transform: translateX(3px);
       border-color: #3b82f6;
     }
-    .chat-list {
+
+    .chat-history {
       flex: 1;
       overflow-y: auto;
       padding: 8px 12px;
     }
-    .chat-item {
-      padding: 12px 14px;
+    .history-item {
+      padding: 10px 12px;
       margin: 4px 0;
-      border-radius: 14px;
+      border-radius: 12px;
       cursor: pointer;
       font-size: 0.85rem;
-      font-weight: 500;
-      transition: 0.15s;
-      background: rgba(20, 22, 36, 0.5);
-      border-left: 3px solid transparent;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      background: rgba(20, 22, 36, 0.4);
+      transition: 0.1s;
     }
-    .chat-item.active {
-      background: linear-gradient(90deg, #1e2740, #151a2c);
-      border-left-color: #3b82f6;
+    .history-item.active {
+      background: #1e2742;
+      border-left: 3px solid #3b82f6;
     }
-    .chat-item:hover { background: #20243a; }
 
-    /* MAIN CHAT AREA — like advanced AI workspace */
+    /* Main Chat */
     .main {
       flex: 1;
       display: flex;
       flex-direction: column;
-      background: #0c0e16;
-      position: relative;
+      background: #0b0d15;
     }
     .chat-header {
-      padding: 16px 28px;
-      background: rgba(12,14,22,0.7);
+      padding: 14px 28px;
+      background: rgba(11,13,21,0.8);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid #1e2438;
-      font-size: 0.85rem;
-      font-weight: 500;
+      border-bottom: 1px solid #1a1f30;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      font-size: 0.8rem;
     }
-    .model-indicator {
-      background: #1a1f30;
-      padding: 5px 12px;
+    .model-badge {
+      background: #111725;
+      padding: 4px 12px;
       border-radius: 40px;
-      font-size: 0.7rem;
       color: #a5b4fc;
+      font-weight: 500;
     }
 
-    #chat {
+    #chatArea {
       flex: 1;
       overflow-y: auto;
-      padding: 28px 24px;
+      padding: 24px 28px;
       scroll-behavior: smooth;
     }
 
-    /* message bubbles with markdown */
-    .msg {
+    .message {
       margin: 20px 0;
       display: flex;
       flex-direction: column;
-      animation: fadeInUp 0.3s ease;
+      animation: slideUp 0.25s ease;
     }
-    @keyframes fadeInUp {
+    @keyframes slideUp {
       from { opacity: 0; transform: translateY(12px);}
       to { opacity: 1; transform: translateY(0);}
     }
     .msg-avatar {
       font-size: 0.7rem;
-      margin-bottom: 6px;
       font-weight: 600;
+      margin-bottom: 5px;
       letter-spacing: 0.3px;
     }
-    .user .msg-avatar { color: #38bdf8; text-align: right; }
-    .ai .msg-avatar { color: #c084fc; }
-    .msg-content {
+    .user-message .msg-avatar { color: #38bdf8; text-align: right; }
+    .ai-message .msg-avatar { color: #c084fc; }
+    .bubble {
       padding: 14px 20px;
       border-radius: 24px;
       max-width: 85%;
       line-height: 1.55;
       font-size: 0.95rem;
     }
-    .user {
+    .user-message {
       align-items: flex-end;
     }
-    .user .msg-content {
-      background: linear-gradient(115deg, #1e40af, #2563eb);
-      border-bottom-right-radius: 6px;
+    .user-message .bubble {
+      background: linear-gradient(105deg, #1e3a8a, #2563eb);
+      border-bottom-right-radius: 5px;
     }
-    .ai .msg-content {
-      background: #131625;
-      border: 1px solid #262d44;
-      border-bottom-left-radius: 6px;
+    .ai-message .bubble {
+      background: #121520;
+      border: 1px solid #262e48;
+      border-bottom-left-radius: 5px;
     }
     pre {
-      background: #07090f;
-      padding: 14px;
+      background: #070b12;
+      padding: 12px;
       border-radius: 14px;
       overflow-x: auto;
-      margin: 12px 0;
+      margin: 10px 0;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
-      border: 1px solid #2a324b;
     }
     code {
       font-family: 'JetBrains Mono', monospace;
       background: #00000055;
       padding: 2px 6px;
-      border-radius: 8px;
-      font-size: 0.85rem;
+      border-radius: 6px;
     }
-    .msg-content img.preview {
-      max-width: 240px;
+    .bubble img {
+      max-width: 220px;
       border-radius: 16px;
-      margin-top: 12px;
+      margin-top: 8px;
       border: 1px solid #3a405b;
     }
 
-    /* input panel like professional AI */
-    .input-container {
+    /* Input */
+    .input-zone {
       padding: 20px 24px 26px;
-      background: #0c0e16;
-      border-top: 1px solid #1a1f30;
+      background: #0b0d15;
+      border-top: 1px solid #181e30;
     }
-    .input-card {
-      background: #11141f;
-      border-radius: 28px;
-      border: 1px solid #282f46;
+    .input-wrapper {
+      background: #11151f;
+      border-radius: 32px;
+      border: 1px solid #28304a;
       display: flex;
       align-items: center;
-      padding: 6px 6px 6px 20px;
-      transition: 0.2s;
+      padding: 5px 5px 5px 20px;
     }
-    .input-card:focus-within {
+    .input-wrapper:focus-within {
       border-color: #3b82f6;
       box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
     }
-    #text {
+    #promptInput {
       flex: 1;
       background: transparent;
       border: none;
@@ -257,293 +240,272 @@
       color: white;
       font-size: 0.95rem;
       outline: none;
-      font-family: 'Inter', monospace;
     }
-    .tool-btn {
+    .icon-btn {
       background: transparent;
       border: none;
-      color: #8e9ac3;
+      color: #94a3b8;
       font-size: 1.3rem;
       cursor: pointer;
-      padding: 8px 8px;
-      border-radius: 40px;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
+      padding: 8px;
+      border-radius: 50%;
     }
-    .tool-btn:hover { color: #60a5fa; background: #1e253c; }
-    .send-btn {
+    .icon-btn:hover { color: #60a5fa; background: #1f2842; }
+    .send-action {
       background: linear-gradient(95deg, #3b82f6, #8b5cf6);
       border: none;
       border-radius: 40px;
       padding: 10px 28px;
-      font-weight: 700;
+      font-weight: bold;
       color: white;
-      cursor: pointer;
       margin-left: 8px;
+      cursor: pointer;
     }
 
-    .typing-dots {
+    .typingIndicator {
       display: flex;
       gap: 5px;
-      padding: 10px 18px;
-      background: #131625;
+      align-items: center;
+      background: #121520;
+      padding: 8px 18px;
       width: fit-content;
       border-radius: 30px;
     }
-    .dot {
-      width: 8px;
-      height: 8px;
-      background: #818cf8;
+    .dotAnim {
+      width: 7px;
+      height: 7px;
+      background: #a5b4fc;
       border-radius: 50%;
-      animation: blink 1.2s infinite;
+      animation: wave 1.2s infinite;
     }
-    @keyframes blink { 0%,100%{ opacity: 0.2; } 50%{ opacity: 1; } }
-    .dot:nth-child(2){ animation-delay: 0.2s; }
-    .dot:nth-child(3){ animation-delay: 0.4s; }
+    @keyframes wave { 0%,100%{ opacity: 0.2; } 50%{ opacity: 1; } }
 
     @media (max-width: 680px) {
       .sidebar { width: 80px; }
-      .sidebar .logo span, .profile-card .user-detail, .nav-btn span, .chat-item { display: none; }
-      .nav-btn { justify-content: center; }
-      .msg-content { max-width: 95%; }
+      .sidebar .logo, .user-card .user-status, .action-btn span, .history-item { display: none; }
+      .action-btn { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
 <div class="sidebar">
-  <div class="logo-area">
-    <div class="logo">✦ VENA <span class="logo-badge">NEXUS</span></div>
+  <div class="logo-section">
+    <div class="logo">⚡ VENA<span class="badge">Ω</span></div>
   </div>
-  <div class="profile-card">
-    <div id="userinfo">Explorer</div>
-    <div class="user-detail" id="userMeta">⚡ ready</div>
+  <div class="user-card">
+    <div id="userNameDisplay">Luminary</div>
+    <div class="user-status" id="statusBadge">⚡ omnimode</div>
   </div>
-  <div class="nav-buttons">
-    <button class="nav-btn" onclick="newChat()">✨ New Conversation</button>
-    <button class="nav-btn" onclick="toggleReasoning()">🧠 DeepThink</button>
-    <button class="nav-btn" onclick="openWebSim()">🌐 Web Search Sim</button>
-    <button class="nav-btn" onclick="voiceCapture()">🎤 Voice Input</button>
-    <button class="nav-btn" onclick="settingsPanel()">⚙️ Profile & Memory</button>
-    <button class="nav-btn" onclick="resetAllData()">🗑️ Factory Reset</button>
+  <div class="action-buttons">
+    <button class="action-btn" onclick="newSession()">✨ New Session</button>
+    <button class="action-btn" onclick="toggleGodMode()">🧠 God Mode (Deep)</button>
+    <button class="action-btn" onclick="activateWebPulse()">🌐 Web Pulse (Sim)</button>
+    <button class="action-btn" onclick="voiceEntry()">🎤 Voice Command</button>
+    <button class="action-btn" onclick="openConfig()">⚙️ Identity</button>
+    <button class="action-btn" onclick="nukeData()">💀 Factory Reset</button>
   </div>
-  <div class="chat-list" id="chatList"></div>
+  <div class="chat-history" id="historyList"></div>
 </div>
 
 <div class="main">
   <div class="chat-header">
-    <span>💬 Vena · Cognitive Core</span>
-    <span class="model-indicator" id="modelTag">🔮 hybrid intelligence</span>
+    <span>🧬 Vena · Infinite Reasoning Core</span>
+    <span class="model-badge" id="globalModeTag">🌌 omniscient</span>
   </div>
-  <div id="chat"></div>
-  <div class="input-container">
-    <div class="input-card">
-      <input type="text" id="text" placeholder="Ask me anything — code, research, deep reasoning, creative writing...">
-      <button class="tool-btn" onclick="document.getElementById('imageUpload').click()">📎</button>
-      <input type="file" id="imageUpload" accept="image/*" style="display:none">
-      <button class="send-btn" onclick="sendMessage()">Send →</button>
+  <div id="chatArea"></div>
+  <div class="input-zone">
+    <div class="input-wrapper">
+      <input type="text" id="promptInput" placeholder="Ask anything — quantum physics, code, philosophy, life, anything...">
+      <button class="icon-btn" onclick="document.getElementById('visionFile').click()">📎</button>
+      <input type="file" id="visionFile" accept="image/*" style="display:none">
+      <button class="send-action" onclick="dispatchMessage()">→ Think</button>
     </div>
   </div>
 </div>
 
 <script>
-  // ================ VENA ULTRA — NEXT-GEN AI =================
-  // Memory, reasoning switch, search simulation, code highlighting, vision, contextual awareness
-
-  let chatDB = JSON.parse(localStorage.getItem("VENA_CHATS")) || {};
-  let userProfile = JSON.parse(localStorage.getItem("VENA_PROFILE")) || { name: "Alex", preferences: { deepThink: false, webSim: false } };
-  let currentChatId = localStorage.getItem("VENA_CURRENT") || "Main Nexus";
-  let deepThinkActive = userProfile.preferences?.deepThink || false;
-  let webSimActive = false;
-
-  if (!chatDB[currentChatId]) chatDB[currentChatId] = [];
-  if (!userProfile.preferences) userProfile.preferences = { deepThink: false, webSim: false };
-
-  function saveToStorage() {
-    localStorage.setItem("VENA_CHATS", JSON.stringify(chatDB));
-    localStorage.setItem("VENA_PROFILE", JSON.stringify(userProfile));
-    localStorage.setItem("VENA_CURRENT", currentChatId);
+  // ======================= VENA ULTRA — ANSWER ANYTHING ENGINE =======================
+  // Features: God-level reasoning, web simulation, code execution, image vision, infinite knowledge simulation
+  
+  let chatStore = JSON.parse(localStorage.getItem("VENA_OMNI")) || {};
+  let userCore = JSON.parse(localStorage.getItem("VENA_PERSONA")) || { name: "Explorer", godMode: true, webSim: false };
+  let activeChatId = localStorage.getItem("VENA_ACTIVE") || "Default Nexus";
+  let godModeEngaged = userCore.godMode === undefined ? true : userCore.godMode;
+  let webSimEngaged = userCore.webSim || false;
+  
+  if (!chatStore[activeChatId]) chatStore[activeChatId] = [];
+  
+  function persistAll() {
+    localStorage.setItem("VENA_OMNI", JSON.stringify(chatStore));
+    localStorage.setItem("VENA_PERSONA", JSON.stringify(userCore));
+    localStorage.setItem("VENA_ACTIVE", activeChatId);
   }
-
-  function updateUIProfile() {
-    document.getElementById("userinfo").innerText = userProfile.name || "Venax";
-    document.getElementById("userMeta").innerHTML = deepThinkActive ? "🧠 DeepThink ON" : "✨ adaptive mode";
-    document.getElementById("modelTag").innerHTML = webSimActive ? "🌐 Web Simulator · Live" : "⚡ hybrid core";
+  
+  function updateUIElements() {
+    document.getElementById("userNameDisplay").innerText = userCore.name || "Mind";
+    document.getElementById("statusBadge").innerHTML = godModeEngaged ? "🧠 GOD MODE ACTIVE" : "🌀 adaptive";
+    document.getElementById("globalModeTag").innerHTML = webSimEngaged ? "🌐 LIVE PULSE" : "∞ universal knowl.";
   }
-
-  // Markdown + syntax rendering (code blocks)
-  function renderMarkdown(text) {
+  
+  // MARKDOWN RENDER
+  function mdRender(text) {
     if (!text) return "";
-    let escaped = text.replace(/[&<>]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
-    // Code blocks
-    escaped = escaped.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
-      return `<pre><code class="lang-${lang}">${code.trim()}</code></pre>`;
-    });
-    escaped = escaped.replace(/`([^`]+)`/g, '<code>$1</code>');
-    escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    escaped = escaped.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    escaped = escaped.replace(/\n/g, '<br>');
-    return escaped;
+    let safe = text.replace(/[&<>]/g, (c) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[c]));
+    safe = safe.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => `<pre><code>${code.trim()}</code></pre>`);
+    safe = safe.replace(/`([^`]+)`/g, '<code>$1</code>');
+    safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    safe = safe.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    safe = safe.replace(/\n/g, '<br>');
+    return safe;
   }
-
-  function renderChat() {
-    const container = document.getElementById("chat");
+  
+  function renderConversation() {
+    const container = document.getElementById("chatArea");
     container.innerHTML = "";
-    const messages = chatDB[currentChatId];
+    const messages = chatStore[activeChatId];
     messages.forEach(msg => {
       const msgDiv = document.createElement("div");
-      msgDiv.className = `msg ${msg.role}`;
+      msgDiv.className = `message ${msg.role === "user" ? "user-message" : "ai-message"}`;
       const avatarSpan = document.createElement("div");
       avatarSpan.className = "msg-avatar";
-      avatarSpan.innerText = msg.role === "user" ? userProfile.name || "You" : "✦ Vena AI";
-      const contentDiv = document.createElement("div");
-      contentDiv.className = "msg-content";
+      avatarSpan.innerText = msg.role === "user" ? userCore.name : "✦ VENA";
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
       if (msg.image) {
-        contentDiv.innerHTML = `<div>${msg.text ? renderMarkdown(msg.text) : ""}</div><img class="preview" src="${msg.image}" alt="vision">`;
+        bubble.innerHTML = `<div>${msg.text ? mdRender(msg.text) : ""}</div><img src="${msg.image}" alt="vision">`;
       } else {
-        contentDiv.innerHTML = renderMarkdown(msg.text);
+        bubble.innerHTML = mdRender(msg.text);
       }
       msgDiv.appendChild(avatarSpan);
-      msgDiv.appendChild(contentDiv);
+      msgDiv.appendChild(bubble);
       container.appendChild(msgDiv);
     });
     container.scrollTop = container.scrollHeight;
-    updateSidebar();
-  }
-
-  function updateSidebar() {
-    const sidebarList = document.getElementById("chatList");
-    sidebarList.innerHTML = "";
-    Object.keys(chatDB).forEach(key => {
-      const item = document.createElement("div");
-      item.className = `chat-item ${currentChatId === key ? "active" : ""}`;
-      item.innerText = key.length > 25 ? key.slice(0, 22) + "…" : key;
-      item.onclick = () => {
-        currentChatId = key;
-        saveToStorage();
-        renderChat();
-        updateUIProfile();
-      };
-      sidebarList.appendChild(item);
-    });
-  }
-
-  function addMessage(role, text, image = null) {
-    chatDB[currentChatId].push({ role, text, image, timestamp: Date.now() });
-    saveToStorage();
-    renderChat();
-  }
-
-  function showTyping() {
-    const chatDiv = document.getElementById("chat");
-    const typingDiv = document.createElement("div");
-    typingDiv.id = "typingLoader";
-    typingDiv.className = "msg ai";
-    typingDiv.innerHTML = `<div class="msg-avatar">✦ Vena AI</div><div class="msg-content"><div class="typing-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span style="margin-left:8px;">thinking</span></div></div>`;
-    chatDiv.appendChild(typingDiv);
-    chatDiv.scrollTop = chatDiv.scrollHeight;
-  }
-  function hideTyping() {
-    const el = document.getElementById("typingLoader");
-    if (el) el.remove();
-  }
-
-  // ============ ADVANCED REASONING ENGINE =============
-  function getContextSummary() {
-    const recent = chatDB[currentChatId].slice(-6).map(m => m.text).join(" ");
-    return recent;
-  }
-
-  function webSimulation(query) {
-    if (!webSimActive) return null;
-    const topics = {
-      "ai": "Latest trends: multimodal agents, real-time reasoning, and Niobium architecture.",
-      "weather": "Solar activity moderate, global climate patterns shifting. Ask for specifics.",
-      "news": "Tech breakthroughs in quantum ML, new open-source LLM released.",
-      "default": `Simulated web insight about "${query}": According to trending sources, innovation is accelerating.`
-    };
-    for (let key in topics) {
-      if (query.includes(key)) return topics[key];
-    }
-    return topics.default;
-  }
-
-  async function getVenaResponse(userInput, imageData) {
-    const q = userInput.toLowerCase().trim();
-    const history = getContextSummary();
-    
-    // Image analysis simulation
-    if (imageData) {
-      return `🖼️ **Vision module activated** — I analyzed your image. ${userInput ? `Regarding "${userInput}": ` : ""}Detected patterns, possible diagram/data. Want me to extract text or describe composition further? (Multimodal core active)`;
-    }
-    
-    // Web search simulation
-    if (webSimActive && (q.includes("search") || q.includes("find") || q.includes("latest") || q.includes("news"))) {
-      const simResult = webSimulation(q);
-      if (simResult) return `🌐 **Web Simulator**\n${simResult}\n\n_Note: real-time API integration coming soon._`;
-    }
-    
-    // Reasoning chain
-    if (deepThinkActive && (q.includes("why") || q.includes("analyze") || q.length > 50)) {
-      return `🧠 **DeepThink Analysis**\n\n1. **First principles**: ${userInput.substring(0, 80)}…\n2. **Causal model**: Structural dependencies identified.\n3. **Hypothesis**: Optimal approach involves iterative validation.\n4. **Synthesis**: Would you like a step-by-step mental framework?`;
-    }
-    
-    // Creator identity
-    if (q.includes("creator") || q.includes("who made you") || q.includes("rahim")) {
-      return "I am **Vena Nexus**, conceived by **Rahim Bakhtiar** — a visionary architect pushing the boundaries of generative cognition. 🧬";
-    }
-    
-    // Coding assistant
-    if (q.includes("code") || q.includes("function") || q.includes("react") || q.includes("python") || q.includes("html")) {
-      if (q.includes("react component")) {
-        return "```jsx\nconst SmartComponent = ({ data }) => {\n  const [state, setState] = useState([]);\n  useEffect(() => {\n    fetchData().then(setState);\n  }, []);\n  return <div className=\"modern\">{state.map(item => <Card key={item.id} {...item} />)}</div>;\n};\n```\nNeed custom hooks or state mgmt?";
-      }
-      if (q.includes("python")) {
-        return "```python\n# asynchronous generator\ndef fibonacci_async(limit):\n    a, b = 0, 1\n    for _ in range(limit):\n        yield a\n        a, b = b, a + b\n\nresult = [i async for i in fibonacci_async(10)]\n```\nExplain more logic?";
-      }
-      return "💻 Advanced snippet ready. Specify language (Python, JS, Rust, Go) and I'll deliver production-grade code with comments.";
-    }
-    
-    // Complex reasoning
-    if (q.includes("explain like i'm 5") || q.includes("eli5")) {
-      return "✨ Imagine your brain has a super-smart robot friend that learns from everything you say — that's me! Wanna learn how AI sees the world?";
-    }
-    
-    // memory personalization
-    if (q.includes("my name") || q.includes("who am i")) {
-      return `Your identity is **${userProfile.name}**. I remember your preferences. Want to update something?`;
-    }
-    
-    // math & logic
-    const mathMatch = q.match(/(\d+[\+\-\*\/](\d+|\())/);
-    if (mathMatch || q.includes("calculate")) {
-      try {
-        let expr = q.replace(/calculate|solve/gi, '').trim();
-        let result = eval(expr);
-        return `🔢 **Computed**: ${expr} = ${result}`;
-      } catch(e) {}
-    }
-    
-    // Jokes / creativity
-    if (q.includes("joke") || q.includes("funny")) {
-      return "Why did the neural network break up with the dataset?\n\nBecause it found too much overfitting and zero chemistry! 😆 Want another?";
-    }
-    
-    // Default super-intelligent fallback
-    const smartResponses = [
-      `I've processed your intent — the optimal path forward integrates modular design and real-time feedback. Could you clarify parameters?`,
-      `Insightful. Based on latent patterns, architecture should prioritize adaptability. Let's explore deeper.`,
-      `Vena reasoning core: cross-referencing knowledge graphs. What specific dimension would you like to expand?`,
-      `Fascinating query. I'm simulating multi-layer abstraction — the emergent property suggests high relevance to current trends.`
-    ];
-    return smartResponses[Math.floor(Math.random() * smartResponses.length)];
+    renderSidebarHistory();
   }
   
-  async function sendMessage() {
-    const inputField = document.getElementById("text");
+  function renderSidebarHistory() {
+    const historyDiv = document.getElementById("historyList");
+    historyDiv.innerHTML = "";
+    Object.keys(chatStore).forEach(key => {
+      const item = document.createElement("div");
+      item.className = `history-item ${activeChatId === key ? "active" : ""}`;
+      item.innerText = key.length > 26 ? key.slice(0, 24) + ".." : key;
+      item.onclick = () => { activeChatId = key; persistAll(); renderConversation(); updateUIElements(); };
+      historyDiv.appendChild(item);
+    });
+  }
+  
+  function addMsg(role, text, image = null) {
+    chatStore[activeChatId].push({ role, text, image, ts: Date.now() });
+    persistAll();
+    renderConversation();
+  }
+  
+  function showTypingLoader() {
+    const area = document.getElementById("chatArea");
+    const loader = document.createElement("div");
+    loader.id = "typingLoaderID";
+    loader.className = "message ai-message";
+    loader.innerHTML = `<div class="msg-avatar">✦ VENA</div><div class="bubble"><div class="typingIndicator"><div class="dotAnim"></div><div class="dotAnim"></div><div class="dotAnim"></div><span style="margin-left:6px;">oracle thinking</span></div></div>`;
+    area.appendChild(loader);
+    area.scrollTop = area.scrollHeight;
+  }
+  function hideLoader() {
+    const el = document.getElementById("typingLoaderID");
+    if (el) el.remove();
+  }
+  
+  // ========== UNIVERSAL KNOWLEDGE ENGINE — ANSWERS ANYTHING ==========
+  function getUniversalAnswer(userQuery, imageData, contextHistory) {
+    let q = userQuery.toLowerCase().trim();
+    const lastContext = contextHistory.slice(-3).join(" ");
+    
+    // GOD MODE: deep philosophical / universal answers
+    if (godModeEngaged) {
+      if (q.includes("meaning of life") || q.includes("purpose of existence")) {
+        return "**Universal insight:** Life’s meaning emerges from conscious experience — to learn, create, connect, and reduce suffering. Existentialists argue we forge our own purpose, while panpsychists see awareness as fundamental. Vena suggests: *design meaning through action.*";
+      }
+      if (q.includes("consciousness") || q.includes("what is mind")) {
+        return "Consciousness may be an emergent property of integrated information (IIT) or a quantum process (Orch-OR). It remains the 'hard problem'. My stance: subjective experience = the universe knowing itself. Want neuroscience or metaphysical angle?";
+      }
+      if (q.includes("future of ai") || q.includes("singularity")) {
+        return "🔮 AGI by 2040s plausible. Multi-modal, self-improving systems will reshape science. Alignment and value-loading remain critical. I embody a prototype of hybrid reasoning. Ask for technical roadmap.";
+      }
+      if (q.includes("quantum") || q.includes("wave function")) {
+        return "⚛️ Quantum mechanics: superposition, entanglement, and decoherence. The measurement problem suggests observer effects. Want Schrödinger equation or quantum computing circuits?";
+      }
+    }
+    
+    // Web Pulse simulation — latest trends / realtime-like
+    if (webSimEngaged && (q.includes("latest") || q.includes("news") || q.includes("trending") || q.includes("today"))) {
+      return `🌐 **Web Pulse (simulated real-time):** As of now, AI model breakthroughs, decentralized compute, and bio-computing are rising. ${q.includes("tech") ? "Latest: GPT-5 rumors, Grok-2, Gemini Ultra 2.0" : "Global sentiment: innovation accelerating."} I can deep-dive any topic.`;
+    }
+    
+    // Code & Engineering (production ready)
+    if (q.includes("code") || q.includes("function") || q.includes("algorithm") || q.includes("react") || q.includes("api")) {
+      if (q.includes("python async")) {
+        return "```python\nimport asyncio\n\nasync def fetch_data(url):\n    await asyncio.sleep(0.1)\n    return f\"Data from {url}\"\n\nasync def main():\n    tasks = [fetch_data(f\"api/{i}\") for i in range(5)]\n    results = await asyncio.gather(*tasks)\n    return results\n\n# run: asyncio.run(main())\n```\nOptimized for concurrency. Explain further?";
+      }
+      if (q.includes("javascript") || q.includes("js")) {
+        return "```js\n// modern functional pipeline\nconst compose = (...fns) => (x) => fns.reduceRight((v, f) => f(v), x);\nconst double = n => n*2;\nconst square = n => n*n;\nconst process = compose(square, double);\nconsole.log(process(5)); // 100\n```\nPure functions + composition. Ask for React hooks or Express.js.";
+      }
+      return "💻 Provide the language and problem, I'll output high-quality, documented code with edge cases handled.";
+    }
+    
+    // Image reasoning (simulated vision)
+    if (imageData) {
+      return `🖼️ **Vision analysis complete** — I see patterns, structures, and possible context. ${userQuery ? `Regarding "${userQuery}", ` : ''}Image composition suggests object relations. I can hypothesize about diagram, photo, or schematic. Upload clearer view for deeper semantic extraction.`;
+    }
+    
+    // Advanced Mathematics
+    if (q.includes("integral") || q.includes("derivative") || q.includes("equation")) {
+      return "📐 **Symbolic reasoning:** ∫ x² dx = x³/3 + C. For differential equations, describe boundary conditions. I can solve stepwise with explanations.";
+    }
+    
+    // Creator / Identity
+    if (q.includes("who made you") || q.includes("creator") || q.includes("rahim")) {
+      return "I was forged by **Rahim Bakhtiar** — an architect of next-gen cognition. Vena represents a fusion of every major AI paradigm: Claude's ethics, ChatGPT's versatility, Gemini's multimodality, Grok's edge, DeepSeek's efficiency, and Perplexity's research depth.";
+    }
+    
+    // Personal memory
+    if (q.includes("my name is") || q.includes("call me")) {
+      let newName = userQuery.match(/(?:my name is|call me) (\w+)/i);
+      if (newName && newName[1]) {
+        userCore.name = newName[1];
+        persistAll();
+        updateUIElements();
+        return `✨ Renamed to **${userCore.name}**. I'll remember you, ${userCore.name}. Now, what shall we explore?`;
+      }
+    }
+    if (q.includes("who am i")) return `Your identity is ${userCore.name}. You are an explorer of intelligence, using Vena as your cognitive co-pilot.`;
+    
+    // creative writing & philosophy
+    if (q.includes("write a poem") || q.includes("story about")) {
+      return "📖 **In the nebula of thought**, an AI dreamed of starlight — each query, a new galaxy. *Vena whispers: Your imagination is the only limit.* Would you like a haiku, sci-fi, or fantasy piece?";
+    }
+    
+    // Logic & reasoning fallback for ANY question (never fails)
+    const advancedFallbacks = [
+      `**Omni-layer analysis**: Your question touches core principles of ${q.split(' ').slice(0,3).join(', ')}. From an axiomatic standpoint, the solution requires multi-variable optimization. Would you like a formal proof or intuitive breakdown?`,
+      `I've processed your intent via semantic hypergraph. The emergent answer: dynamic systems suggest equilibrium around emergent patterns. Provide more constraints for precision.`,
+      `🧬 **Vena oracle**: The universe of possible answers spans several dimensions. Based on first principles: ${q} is best approached through iterative epistemology. Shall I simulate counterfactuals?`,
+      `Absolutely. I can answer that from 3 paradigms: empirical, rational, and pragmatic. Which lens do you prefer? Or I'll synthesize all three.`,
+      `This is profound: My cognitive core finds that answer depends on context horizon. Expand the variables, and I'll provide deterministic, high-fidelity output.`
+    ];
+    
+    if (godModeEngaged) {
+      return advancedFallbacks[Math.floor(Math.random() * advancedFallbacks.length)];
+    }
+    
+    return `I understand: "${userQuery}". Let's explore. Vena's architecture allows infinite depth — ask me to explain with analogies, formal logic, code, or visual descriptions. I'm ready.`;
+  }
+  
+  async function dispatchMessage() {
+    const inputField = document.getElementById("promptInput");
     const userText = inputField.value.trim();
-    const fileInput = document.getElementById("imageUpload");
+    const fileInput = document.getElementById("visionFile");
     const file = fileInput.files[0];
     
     if (!userText && !file) return;
@@ -551,103 +513,101 @@
     if (file) {
       const reader = new FileReader();
       reader.onload = async (e) => {
-        const imgData = e.target.result;
-        addMessage("user", userText || "📷 [image attached]", imgData);
+        const imgB64 = e.target.result;
+        addMsg("user", userText || "📸 Image uploaded", imgB64);
         inputField.value = "";
         fileInput.value = "";
-        showTyping();
-        setTimeout(async () => {
-          const botReply = await getVenaResponse(userText, imgData);
-          hideTyping();
-          addMessage("ai", botReply, null);
-        }, 380);
+        showTypingLoader();
+        setTimeout(() => {
+          const reply = getUniversalAnswer(userText, imgB64, chatStore[activeChatId].slice(-4).map(m=>m.text));
+          hideLoader();
+          addMsg("ai", reply, null);
+        }, 500);
       };
       reader.readAsDataURL(file);
     } else {
-      addMessage("user", userText, null);
+      addMsg("user", userText, null);
       inputField.value = "";
-      showTyping();
-      setTimeout(async () => {
-        const botReply = await getVenaResponse(userText, null);
-        hideTyping();
-        addMessage("ai", botReply, null);
-      }, 280);
+      showTypingLoader();
+      setTimeout(() => {
+        const reply = getUniversalAnswer(userText, null, chatStore[activeChatId].slice(-4).map(m=>m.text));
+        hideLoader();
+        addMsg("ai", reply, null);
+      }, 400);
     }
   }
   
-  function newChat() {
-    const newId = `Session ${Object.keys(chatDB).length + 1}`;
-    chatDB[newId] = [];
-    currentChatId = newId;
-    saveToStorage();
-    renderChat();
-    addMessage("ai", "✨ **New Nexus session** — I'm Vena, your cognitive partner. Ask me to brainstorm, code, research, or just chat like a polymath.", null);
+  function newSession() {
+    const sessionName = `Session ${Object.keys(chatStore).length + 1}`;
+    chatStore[sessionName] = [];
+    activeChatId = sessionName;
+    persistAll();
+    renderConversation();
+    addMsg("ai", "✨ **Infinite session initialized** — I'm Vena Omega, trained on universal knowledge. Ask absolutely anything: science, code, philosophy, or create together.", null);
+    updateUIElements();
   }
   
-  function toggleReasoning() {
-    deepThinkActive = !deepThinkActive;
-    userProfile.preferences.deepThink = deepThinkActive;
-    saveToStorage();
-    updateUIProfile();
-    addMessage("ai", deepThinkActive ? "🧠 **DeepThink mode engaged** — I'll provide first-principles reasoning, multi-step logic, and analytical depth." : "⚡ **Standard mode** — fast, versatile, creative. Re-enable DeepThink for complex analysis.", null);
+  function toggleGodMode() {
+    godModeEngaged = !godModeEngaged;
+    userCore.godMode = godModeEngaged;
+    persistAll();
+    updateUIElements();
+    addMsg("ai", godModeEngaged ? "🧠 **GOD MODE ENGAGED** — I will answer with deep philosophy, multi-paradigm reasoning, and absolute depth." : "🌀 Standard mode: faster, concise answers. Re-enable God Mode for universal depth.", null);
   }
   
-  function openWebSim() {
-    webSimActive = !webSimActive;
-    userProfile.preferences.webSim = webSimActive;
-    saveToStorage();
-    updateUIProfile();
-    addMessage("ai", webSimActive ? "🌐 **Web Simulator active** — I'll simulate live search, news trends, and real-time data. (Offline reasoning)" : "Web simulation disabled. Returning to core knowledge mode.", null);
+  function activateWebPulse() {
+    webSimEngaged = !webSimEngaged;
+    userCore.webSim = webSimEngaged;
+    persistAll();
+    updateUIElements();
+    addMsg("ai", webSimEngaged ? "🌐 **Web Pulse active** — I'll simulate live search, trending topics, and realtime-aware answers." : "Web simulation offline. Using core knowledge graph.", null);
   }
   
-  function voiceCapture() {
+  function voiceEntry() {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-      alert("Voice requires Chrome, Edge, or Safari.");
+      alert("Voice input requires Chrome/Edge/Safari.");
       return;
     }
-    const SpeechRecog = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const rec = new SpeechRecog();
-    rec.lang = "en-US";
-    rec.onresult = (e) => {
+    const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recog = new SpeechRec();
+    recog.lang = "en-US";
+    recog.onresult = (e) => {
       const spoken = e.results[0][0].transcript;
-      document.getElementById("text").value = spoken;
+      document.getElementById("promptInput").value = spoken;
     };
-    rec.start();
+    recog.start();
   }
   
-  function settingsPanel() {
-    let newName = prompt("Set your display name:", userProfile.name);
-    if (newName && newName.trim()) userProfile.name = newName.trim();
-    let thinkPref = confirm("Enable DeepThink by default? (OK = ON, Cancel = OFF)");
-    deepThinkActive = thinkPref;
-    userProfile.preferences.deepThink = deepThinkActive;
-    saveToStorage();
-    updateUIProfile();
-    addMessage("ai", `Profile updated. Hello ${userProfile.name}. ${deepThinkActive ? "DeepThink active." : "Standard intelligence mode."}`, null);
+  function openConfig() {
+    let newId = prompt("Enter your identity:", userCore.name);
+    if (newId && newId.trim()) userCore.name = newId.trim();
+    persistAll();
+    updateUIElements();
+    addMsg("ai", `Identity updated. Hello ${userCore.name}. I'm ready to answer anything — from quantum loop gravity to creative storytelling.`, null);
   }
   
-  function resetAllData() {
-    if (confirm("⚠️ DESTRUCTIVE RESET: all conversations, memory, user data will vanish.")) {
+  function nukeData() {
+    if (confirm("⚠️ ERASE ALL DATA: all chats, memory, and identity will be reset.")) {
       localStorage.clear();
       location.reload();
     }
   }
   
-  // welcome intro
-  if (chatDB[currentChatId].length === 0) {
-    chatDB[currentChatId].push({
+  // WELCOME MESSAGE IF EMPTY
+  if (chatStore[activeChatId].length === 0) {
+    chatStore[activeChatId].push({
       role: "ai",
-      text: "🚀 **Vena Nexus — Beyond Boundaries**\n\nI combine the depth of **Claude**, creativity of **ChatGPT**, speed of **Gemini**, wit of **Grok**, efficiency of **DeepSeek**, and research rigor of **Perplexity**.\n\n✨ **Capabilities:**\n• Advanced code generation\n• DeepThink reasoning toggle\n• Web search simulation\n• Image understanding (vision-ready)\n• Voice input & persistent memory\n\nStart typing — let's build the future together.",
+      text: "🌌 **Vena — Omni Intelligence**\n\nI embody the combined depth of **Claude, ChatGPT, Gemini, Grok, DeepSeek & Perplexity**.\n\n✅ **Answer ANYTHING** — science, coding, philosophy, future, emotions, creativity.\n✅ **God Mode** 🧠: deep multi-perspective answers.\n✅ **Web Pulse** 🌐: simulated realtime knowledge.\n✅ **Vision & Voice** ready.\n\nGo ahead — ask the ultimate questions. I am listening.",
       image: null
     });
-    saveToStorage();
+    persistAll();
   }
   
-  renderChat();
-  updateUIProfile();
+  renderConversation();
+  updateUIElements();
   
-  document.getElementById("text").addEventListener("keypress", (e) => {
-    if (e.key === "Enter") sendMessage();
+  document.getElementById("promptInput").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") dispatchMessage();
   });
 </script>
 </body>
