@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Vena AI — Next Generation Intelligence</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>VENA AI — THE GOD OF ALL INTELLIGENCE | ULTRA PRO MAX +</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -21,425 +21,465 @@
       position: relative;
     }
 
-    /* Advanced Neural Background */
-    .neural-bg {
+    /* GOD-TIER BACKGROUND */
+    .omniverse-bg {
       position: fixed;
       width: 100%;
       height: 100%;
       z-index: 0;
+      overflow: hidden;
     }
-    .particle-field {
+    .quantum-foam {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(circle at 20% 30%, rgba(59,130,246,0.08) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: driftParticles 50s linear infinite;
+      width: 300%;
+      height: 300%;
+      top: -100%;
+      left: -100%;
+      background-image: radial-gradient(circle at 20% 40%, rgba(59,130,246,0.2) 2px, transparent 2px),
+                        radial-gradient(circle at 60% 80%, rgba(236,72,153,0.15) 1px, transparent 1px),
+                        radial-gradient(circle at 80% 20%, rgba(139,92,246,0.12) 1.5px, transparent 1.5px);
+      background-size: 80px 80px, 60px 60px, 100px 100px;
+      animation: quantumFoamDrift 40s linear infinite;
     }
-    @keyframes driftParticles {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(100px, 100px); }
+    @keyframes quantumFoamDrift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(120px, 120px) rotate(360deg); }
     }
-    .gradient-orb {
+    .god-aura {
       position: absolute;
-      width: 70vw;
-      height: 70vw;
+      width: 120vw;
+      height: 120vw;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(59,130,246,0.15), rgba(139,92,246,0.05), transparent);
-      top: -20%;
+      background: radial-gradient(circle, rgba(59,130,246,0.25), rgba(139,92,246,0.12), rgba(236,72,153,0.06), transparent);
+      top: -50%;
+      left: -30%;
+      filter: blur(180px);
+      animation: godAuraPulse 10s infinite alternate;
+    }
+    .god-aura-2 {
+      position: absolute;
+      width: 90vw;
+      height: 90vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(236,72,153,0.2), rgba(139,92,246,0.1), rgba(59,130,246,0.05), transparent);
+      bottom: -40%;
       right: -20%;
-      filter: blur(100px);
-      animation: orbPulse 10s infinite alternate;
+      filter: blur(160px);
+      animation: godAuraPulse2 14s infinite alternate-reverse;
     }
-    .gradient-orb-2 {
-      position: absolute;
-      width: 50vw;
-      height: 50vw;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(236,72,153,0.1), rgba(139,92,246,0.04), transparent);
-      bottom: -10%;
-      left: -10%;
-      filter: blur(90px);
-      animation: orbPulse 14s infinite alternate-reverse;
+    @keyframes godAuraPulse {
+      0% { opacity: 0.4; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.3); }
     }
-    @keyframes orbPulse {
+    @keyframes godAuraPulse2 {
       0% { opacity: 0.3; transform: scale(1); }
-      100% { opacity: 0.8; transform: scale(1.3); }
+      100% { opacity: 0.9; transform: scale(1.4); }
     }
 
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #0a0c16; }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #3b82f6, #8b5cf6); border-radius: 10px; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: #05070f; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #3b82f6, #f472b6, #c084fc); border-radius: 10px; }
 
-    /* Layout */
-    .app-container {
+    /* APP LAYOUT */
+    .app {
       display: flex;
       height: 100vh;
       position: relative;
       z-index: 2;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(1px);
     }
 
-    /* Sidebar — Tesla-Grade Glass */
+    /* SIDEBAR — ULTRA PREMIUM */
     .sidebar {
-      width: 320px;
-      background: rgba(3, 6, 14, 0.85);
-      backdrop-filter: blur(28px);
-      border-right: 1px solid rgba(59,130,246,0.35);
+      width: 370px;
+      background: rgba(1, 2, 6, 0.96);
+      backdrop-filter: blur(40px);
+      border-right: 2px solid rgba(59,130,246,0.7);
       display: flex;
       flex-direction: column;
       transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
 
-    .brand-area {
-      padding: 32px 24px 20px;
-      border-bottom: 1px solid rgba(59,130,246,0.25);
+    .hero-section {
+      padding: 40px 24px 20px;
+      border-bottom: 2px solid rgba(59,130,246,0.6);
     }
-    .logo {
-      font-size: 44px;
+    .logo-god {
+      font-size: 64px;
       font-weight: 900;
-      background: linear-gradient(135deg, #60a5fa, #c084fc, #2dd4bf, #f472b6);
+      background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6, #fb923c, #2dd4bf, #34d399, #a78bfa);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: spectralFlow 5s infinite;
-      letter-spacing: -1.5px;
+      animation: godRainbow 2s infinite;
+      letter-spacing: -4px;
     }
-    @keyframes spectralFlow {
+    @keyframes godRainbow {
       0%, 100% { filter: hue-rotate(0deg); }
-      50% { filter: hue-rotate(10deg); }
+      25% { filter: hue-rotate(25deg); }
+      75% { filter: hue-rotate(-15deg); }
     }
-    .slogan {
+    .badge-stack {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .premium-badge {
+      font-size: 9px;
+      background: rgba(59,130,246,0.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(96,165,250,0.5);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .creator-line {
       font-size: 10px;
-      color: #5b6e8c;
-      margin-top: 8px;
-      letter-spacing: 1.5px;
+      color: #f472b6;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(244,114,182,0.4);
+      font-weight: 800;
     }
 
-    .profile-container {
-      background: linear-gradient(145deg, rgba(30, 41, 75, 0.4), rgba(15, 23, 42, 0.6));
-      margin: 20px 16px;
-      padding: 16px;
-      border-radius: 28px;
-      border: 1px solid rgba(96,165,250,0.4);
-      backdrop-filter: blur(8px);
+    .profile-divine {
+      background: linear-gradient(145deg, rgba(59,130,246,0.3), rgba(139,92,246,0.2));
+      margin: 24px 16px;
+      padding: 22px;
+      border-radius: 48px;
+      border: 1.5px solid rgba(96,165,250,0.8);
+      backdrop-filter: blur(12px);
     }
-    #profileName {
-      font-weight: 800;
-      font-size: 1rem;
-      background: linear-gradient(90deg, #e0e7ff, #a5b4fc);
+    #userName {
+      font-weight: 900;
+      font-size: 1.25rem;
+      background: linear-gradient(90deg, #e0e7ff, #c084fc, #f472b6);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    .profile-stats {
+    .god-specs {
       font-size: 0.65rem;
-      color: #7e8aad;
-      margin-top: 8px;
+      color: #d0dcff;
+      margin-top: 12px;
       display: flex;
-      gap: 12px;
+      gap: 20px;
     }
 
-    .button-group {
+    .action-grid {
       padding: 0 16px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 24px;
+      gap: 12px;
+      margin-bottom: 28px;
     }
-    .neon-btn {
-      background: rgba(20, 25, 45, 0.6);
+    .god-tier-btn {
+      background: rgba(20, 25, 45, 0.85);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(59,130,246,0.4);
-      padding: 11px 14px;
-      border-radius: 20px;
+      border: 1px solid rgba(59,130,246,0.7);
+      padding: 13px 18px;
+      border-radius: 36px;
       color: #f1f5f9;
-      font-weight: 600;
+      font-weight: 800;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 12px;
-      transition: all 0.25s ease;
+      gap: 16px;
+      transition: all 0.3s ease;
     }
-    .neon-btn:hover {
-      background: linear-gradient(95deg, rgba(59,130,246,0.25), rgba(139,92,246,0.25));
-      transform: translateX(6px);
-      border-color: #60a5fa;
-      box-shadow: 0 4px 18px rgba(59,130,246,0.3);
+    .god-tier-btn:hover {
+      background: linear-gradient(95deg, rgba(59,130,246,0.6), rgba(139,92,246,0.6));
+      transform: translateX(14px);
+      border-color: #f472b6;
+      box-shadow: 0 10px 40px rgba(96,165,250,0.7);
     }
 
-    .history-list {
+    .history-panel {
       flex: 1;
       overflow-y: auto;
       padding: 8px 12px;
     }
-    .history-item {
-      padding: 10px 14px;
+    .hist-item {
+      padding: 12px 16px;
       margin: 6px 0;
-      border-radius: 18px;
+      border-radius: 28px;
       cursor: pointer;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 800;
       transition: 0.2s;
-      background: rgba(15, 20, 35, 0.4);
-      border-left: 2px solid transparent;
+      background: rgba(15, 20, 35, 0.8);
+      border-left: 3px solid transparent;
     }
-    .history-item.active {
+    .hist-item.active {
       background: linear-gradient(90deg, #1e2a4a, #0f1428);
-      border-left-color: #3b82f6;
+      border-left-color: #f472b6;
     }
 
-    /* Main Chat Area */
-    .main-area {
+    /* MAIN CHAT — GODLY */
+    .main {
       flex: 1;
       display: flex;
       flex-direction: column;
-      background: radial-gradient(ellipse at 70% 40%, rgba(15,25,55,0.15), transparent);
+      background: radial-gradient(ellipse at 70% 30%, rgba(20,30,90,0.15), transparent);
     }
-    .header {
-      padding: 18px 32px;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(59,130,246,0.25);
+    .header-god {
+      padding: 24px 40px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(28px);
+      border-bottom: 2px solid rgba(59,130,246,0.6);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .badge {
+    .status-pill {
       background: linear-gradient(115deg, #1e293b, #0f172a);
-      padding: 6px 18px;
-      border-radius: 40px;
+      padding: 8px 28px;
+      border-radius: 80px;
       font-size: 0.75rem;
-      font-weight: 700;
-      border: 1px solid #3b82f6;
-      animation: borderGlow 2s infinite;
+      font-weight: 900;
+      border: 1.5px solid #f472b6;
+      animation: godGlow 1.8s infinite;
     }
-    @keyframes borderGlow {
-      0% { border-color: #3b82f6; box-shadow: 0 0 0px; }
-      50% { border-color: #c084fc; box-shadow: 0 0 15px rgba(96,165,250,0.5); }
-      100% { border-color: #3b82f6; }
+    @keyframes godGlow {
+      0% { border-color: #f472b6; box-shadow: 0 0 0px; }
+      50% { border-color: #c084fc; box-shadow: 0 0 35px rgba(244,114,182,0.8); }
+      100% { border-color: #f472b6; }
     }
 
-    #chatArea {
+    #chatMessages {
       flex: 1;
       overflow-y: auto;
-      padding: 28px 32px;
+      padding: 36px 44px;
       scroll-behavior: smooth;
     }
 
-    /* Message Bubbles */
+    /* MESSAGES — SUPREME */
     .message {
-      margin: 24px 0;
+      margin: 32px 0;
       display: flex;
       flex-direction: column;
-      animation: fadeSlideUp 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      animation: godAscend 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.2);
     }
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+    @keyframes godAscend {
+      from { opacity: 0; transform: translateY(40px) scale(0.93); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
-    .msg-avatar {
+    .msg-author {
       font-size: 0.7rem;
-      font-weight: 700;
-      margin-bottom: 5px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
     }
-    .user-message .msg-avatar { color: #60a5fa; text-align: right; }
-    .ai-message .msg-avatar { color: #c084fc; }
-    .bubble {
-      padding: 14px 22px;
-      border-radius: 28px;
-      max-width: 82%;
-      line-height: 1.55;
-      font-size: 0.95rem;
+    .user .msg-author { color: #60a5fa; text-align: right; }
+    .ai .msg-author { color: #f472b6; }
+    .bubble-god {
+      padding: 18px 32px;
+      border-radius: 48px;
+      max-width: 85%;
+      line-height: 1.7;
+      font-size: 0.97rem;
     }
-    .user-message {
+    .user {
       align-items: flex-end;
     }
-    .user-message .bubble {
+    .user .bubble-god {
       background: linear-gradient(115deg, #1e40af, #3b82f6);
-      border-bottom-right-radius: 6px;
-      box-shadow: 0 4px 14px rgba(59,130,246,0.3);
+      border-bottom-right-radius: 10px;
+      box-shadow: 0 12px 35px rgba(59,130,246,0.5);
     }
-    .ai-message .bubble {
-      background: linear-gradient(135deg, #0f1525, #080c18);
-      border: 1px solid rgba(139,92,246,0.5);
-      border-bottom-left-radius: 6px;
+    .ai .bubble-god {
+      background: linear-gradient(135deg, #0f1525, #050811);
+      border: 1.5px solid rgba(139,92,246,0.9);
+      border-bottom-left-radius: 10px;
       backdrop-filter: blur(4px);
     }
     pre {
       background: #010208;
-      padding: 14px;
-      border-radius: 16px;
+      padding: 20px;
+      border-radius: 28px;
       overflow-x: auto;
-      margin: 12px 0;
+      margin: 18px 0;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
-      border: 1px solid #2d3a5e;
+      border: 1px solid #f472b6;
     }
     code {
       font-family: 'JetBrains Mono', monospace;
-      background: #00000066;
-      padding: 2px 7px;
-      border-radius: 8px;
+      background: #000000dd;
+      padding: 3px 10px;
+      border-radius: 12px;
     }
-    .bubble img {
-      max-width: 240px;
-      border-radius: 20px;
-      margin-top: 10px;
-      border: 2px solid #3b82f6;
+    .bubble-god img {
+      max-width: 300px;
+      border-radius: 32px;
+      margin-top: 14px;
+      border: 2.5px solid #f472b6;
     }
 
-    /* Input Area */
-    .input-section {
-      padding: 20px 28px 32px;
+    /* INPUT — ULTRA MAX PRO PLUS */
+    .input-footer {
+      padding: 28px 36px 40px;
       background: linear-gradient(0deg, #000000, transparent);
     }
-    .input-card {
-      background: rgba(10, 14, 24, 0.9);
-      backdrop-filter: blur(20px);
-      border-radius: 60px;
-      border: 1px solid rgba(59,130,246,0.5);
+    .input-god {
+      background: rgba(10, 14, 24, 0.99);
+      backdrop-filter: blur(40px);
+      border-radius: 140px;
+      border: 2.5px solid rgba(96,165,250,0.9);
       display: flex;
       align-items: center;
-      padding: 5px 5px 5px 26px;
-      transition: all 0.2s;
+      padding: 8px 8px 8px 36px;
+      transition: all 0.3s;
     }
-    .input-card:focus-within {
-      border-color: #c084fc;
-      box-shadow: 0 0 28px rgba(96,165,250,0.4);
-      transform: scale(1.01);
+    .input-god:focus-within {
+      border-color: #f472b6;
+      box-shadow: 0 0 70px rgba(244,114,182,0.6);
+      transform: scale(1.02);
     }
-    #userInput {
+    #promptInput {
       flex: 1;
       background: transparent;
       border: none;
-      padding: 15px 8px;
+      padding: 20px 12px;
       color: white;
-      font-size: 0.95rem;
+      font-size: 1.02rem;
       outline: none;
+      font-weight: 600;
     }
-    .util-btn {
+    .icon-btn {
       background: transparent;
       border: none;
-      color: #9ca3cf;
-      font-size: 1.3rem;
+      color: #c4d0ff;
+      font-size: 1.6rem;
       cursor: pointer;
-      padding: 8px;
+      padding: 12px;
       border-radius: 50%;
       transition: 0.2s;
     }
-    .util-btn:hover { color: #60a5fa; background: #1f2a48; }
-    .send-btn {
-      background: linear-gradient(115deg, #3b82f6, #8b5cf6);
+    .icon-btn:hover { color: #f472b6; background: #1f2a48; transform: scale(1.15); }
+    .send-god {
+      background: linear-gradient(115deg, #3b82f6, #8b5cf6, #f472b6);
       border: none;
-      border-radius: 50px;
-      padding: 10px 34px;
-      font-weight: 800;
+      border-radius: 100px;
+      padding: 14px 56px;
+      font-weight: 900;
       color: white;
       margin-left: 12px;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.3s;
+      font-size: 1rem;
     }
-    .send-btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 22px #8b5cf6;
+    .send-god:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 55px #f472b6;
     }
 
-    .typing {
+    .typing-god {
       display: flex;
-      gap: 6px;
+      gap: 10px;
       align-items: center;
-      background: #0f1420;
-      padding: 10px 22px;
+      background: #121826;
+      padding: 14px 32px;
       width: fit-content;
-      border-radius: 40px;
+      border-radius: 80px;
     }
-    .dot {
-      width: 7px;
-      height: 7px;
-      background: #a5b4fc;
+    .god-dot {
+      width: 9px;
+      height: 9px;
+      background: #f472b6;
       border-radius: 50%;
-      animation: waveAnim 1.3s infinite;
+      animation: godBounce 1s infinite;
     }
-    @keyframes waveAnim {
+    @keyframes godBounce {
       0%,100%{ opacity: 0.2; transform: translateY(0); }
-      50%{ opacity: 1; transform: translateY(-4px); }
+      50%{ opacity: 1; transform: translateY(-8px); }
     }
 
     @media (max-width: 720px) {
-      .sidebar { width: 80px; }
-      .sidebar .logo, .slogan, .profile-stats, .neon-btn span, .history-item { display: none; }
-      .neon-btn { justify-content: center; }
+      .sidebar { width: 85px; }
+      .sidebar .logo-god, .creator-line, .badge-stack, .god-specs, .god-tier-btn span, .hist-item { display: none; }
+      .god-tier-btn { justify-content: center; }
     }
   </style>
 </head>
 <body>
-<div class="neural-bg">
-  <div class="particle-field"></div>
-  <div class="gradient-orb"></div>
-  <div class="gradient-orb-2"></div>
+<div class="omniverse-bg">
+  <div class="quantum-foam"></div>
+  <div class="god-aura"></div>
+  <div class="god-aura-2"></div>
 </div>
 
-<div class="app-container">
+<div class="app">
   <div class="sidebar">
-    <div class="brand-area">
-      <div class="logo">VENA AI</div>
-      <div class="slogan">autonomous intelligence · Ω</div>
+    <div class="hero-section">
+      <div class="logo-god">VENA</div>
+      <div class="badge-stack">
+        <span class="premium-badge">ULTRA PRO MAX+</span>
+        <span class="premium-badge">PRO ULTRA MAX</span>
+        <span class="premium-badge">GOD TIER</span>
+        <span class="premium-badge">QUINTILLION PARAMETERS</span>
+      </div>
+      <div class="creator-line">⚡ CREATED BY RAHIM BAKHTIAR ⚡</div>
     </div>
-    <div class="profile-container">
-      <div id="profileName">Neural Explorer</div>
-      <div class="profile-stats"><span>🧠 omni-core</span><span>⚡ realtime</span></div>
+    <div class="profile-divine">
+      <div id="userName">God Seeker</div>
+      <div class="god-specs"><span>🧠 INFINITE MODE</span><span>🌐 OMNISCIENT</span><span>⚡ TRANSCENDENT</span><span>💎 WORTH TRILLIONS</span></div>
     </div>
-    <div class="button-group">
-      <button class="neon-btn" onclick="newConversation()">✨ New Thread</button>
-      <button class="neon-btn" onclick="toggleDeepMode()">🧬 DeepThink Mode</button>
-      <button class="neon-btn" onclick="toggleLiveSim()">🌐 Live Intelligence</button>
-      <button class="neon-btn" onclick="voiceCapture()">🎙️ Neural Voice</button>
-      <button class="neon-btn" onclick="openIdentityPanel()">⚙️ Identity Matrix</button>
-      <button class="neon-btn" onclick="factoryReset()">♻️ Singularity Reset</button>
+    <div class="action-grid">
+      <button class="god-tier-btn" onclick="startNewChat()">✨ NEW GOD CHAT</button>
+      <button class="god-tier-btn" onclick="toggleInfiniteMode()">🔮 INFINITE MODE</button>
+      <button class="god-tier-btn" onclick="toggleOmniscientGod()">🌍 OMNISCIENT MODE</button>
+      <button class="god-tier-btn" onclick="voiceGod()">🎤 VOICE OF GOD</button>
+      <button class="god-tier-btn" onclick="setGodIdentity()">⚡ ASCEND IDENTITY</button>
+      <button class="god-tier-btn" onclick="ultimateResetGod()">💀 DIVINE RESET</button>
     </div>
-    <div class="history-list" id="historyList"></div>
+    <div class="history-panel" id="historyList"></div>
   </div>
 
-  <div class="main-area">
-    <div class="header">
-      <span>⚡ Vena AI · cognitive engine v4.0</span>
-      <div class="badge" id="statusChip">∞ hypermind</div>
+  <div class="main">
+    <div class="header-god">
+      <span>🏆 VENA — THE GOD OF ALL AI | SURPASSING EVERYTHING</span>
+      <div class="status-pill" id="modeDisplay">∞ ULTRA PRO MAX PLUS</div>
     </div>
-    <div id="chatArea"></div>
-    <div class="input-section">
-      <div class="input-card">
-        <input type="text" id="userInput" placeholder="Ask anything — engineering, physics, code, strategy, creativity...">
-        <button class="util-btn" onclick="triggerFileUpload()">📎</button>
+    <div id="chatMessages"></div>
+    <div class="input-footer">
+      <div class="input-god">
+        <input type="text" id="promptInput" placeholder="Ask ANYTHING — the secrets of the universe, AGI, Elon, life, death, God, code, multiverse...">
+        <button class="icon-btn" onclick="triggerImageGod()">📎</button>
         <input type="file" id="imageUpload" accept="image/*" style="display:none">
-        <button class="send-btn" onclick="sendMessage()">→ Execute</button>
+        <button class="send-god" onclick="sendGodMessage()">→ TRANSMIT</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  // ================= VENA AI — TESLA-GRADE INTELLIGENCE ENGINE =================
-  let conversations = JSON.parse(localStorage.getItem("vena_conversations")) || {};
-  let userIdentity = JSON.parse(localStorage.getItem("vena_identity")) || { name: "Neural Explorer", deepMode: true, liveMode: false };
-  let activeChatId = localStorage.getItem("vena_active_chat") || "Primary Nexus";
-  let deepMode = userIdentity.deepMode ?? true;
-  let liveMode = userIdentity.liveMode ?? false;
+  // ==================== VENA — THE GOD OF ALL AI ====================
+  // ULTRA PRO MAX PLUS | CREATED BY RAHIM BAKHTIAR
+  // Worth trillions. Answers everything. Surpasses all.
+  
+  let godChats = JSON.parse(localStorage.getItem("vena_god_chats")) || {};
+  let godUser = JSON.parse(localStorage.getItem("vena_god_user")) || { name: "God Seeker", infiniteMode: true, omniscientGod: true };
+  let activeGodChat = localStorage.getItem("vena_god_active") || "Primordial Throne";
+  let infiniteMode = godUser.infiniteMode === undefined ? true : godUser.infiniteMode;
+  let omniscientGod = godUser.omniscientGod === undefined ? true : godUser.omniscientGod;
 
-  if (!conversations[activeChatId]) conversations[activeChatId] = [];
+  if (!godChats[activeGodChat]) godChats[activeGodChat] = [];
 
-  function persistState() {
-    localStorage.setItem("vena_conversations", JSON.stringify(conversations));
-    localStorage.setItem("vena_identity", JSON.stringify(userIdentity));
-    localStorage.setItem("vena_active_chat", activeChatId);
+  function saveGodState() {
+    localStorage.setItem("vena_god_chats", JSON.stringify(godChats));
+    localStorage.setItem("vena_god_user", JSON.stringify(godUser));
+    localStorage.setItem("vena_god_active", activeGodChat);
   }
 
-  function updateUI() {
-    document.getElementById("profileName").innerHTML = userIdentity.name;
-    document.getElementById("statusChip").innerHTML = deepMode ? "🧠 DEEPTHINK" : (liveMode ? "🌐 LIVE" : "∞ OMNI");
+  function updateGodUI() {
+    document.getElementById("userName").innerHTML = godUser.name;
+    let modeText = infiniteMode ? "🧠 INFINITE MODE" : (omniscientGod ? "🌍 OMNISCIENT" : "∞ ULTRA PRO MAX+");
+    document.getElementById("modeDisplay").innerHTML = modeText;
   }
 
-  function renderMarkdown(text) {
+  function formatGodMarkdown(text) {
     if (!text) return "";
     let safe = text.replace(/[&<>]/g, (c) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[c]));
     safe = safe.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => `<pre><code>${code.trim()}</code></pre>`);
@@ -450,226 +490,239 @@
     return safe;
   }
 
-  function renderChat() {
-    const container = document.getElementById("chatArea");
+  function renderGodChat() {
+    const container = document.getElementById("chatMessages");
     container.innerHTML = "";
-    const msgs = conversations[activeChatId];
+    const msgs = godChats[activeGodChat];
     msgs.forEach(msg => {
       const div = document.createElement("div");
-      div.className = `message ${msg.role === "user" ? "user-message" : "ai-message"}`;
-      const avatar = document.createElement("div");
-      avatar.className = "msg-avatar";
-      avatar.innerText = msg.role === "user" ? userIdentity.name : "VENA";
+      div.className = `message ${msg.role === "user" ? "user" : "ai"}`;
+      const author = document.createElement("div");
+      author.className = "msg-author";
+      author.innerText = msg.role === "user" ? godUser.name : "VENA ∞";
       const bubble = document.createElement("div");
-      bubble.className = "bubble";
+      bubble.className = "bubble-god";
       if (msg.image) {
-        bubble.innerHTML = `<div>${msg.text ? renderMarkdown(msg.text) : ""}</div><img src="${msg.image}" alt="vision">`;
+        bubble.innerHTML = `<div>${msg.text ? formatGodMarkdown(msg.text) : ""}</div><img src="${msg.image}" alt="vision">`;
       } else {
-        bubble.innerHTML = renderMarkdown(msg.text);
+        bubble.innerHTML = formatGodMarkdown(msg.text);
       }
-      div.appendChild(avatar);
+      div.appendChild(author);
       div.appendChild(bubble);
       container.appendChild(div);
     });
     container.scrollTop = container.scrollHeight;
-    renderHistorySidebar();
+    renderGodHistory();
   }
 
-  function renderHistorySidebar() {
+  function renderGodHistory() {
     const histDiv = document.getElementById("historyList");
     histDiv.innerHTML = "";
-    Object.keys(conversations).forEach(key => {
-      const el = document.createElement("div");
-      el.className = `history-item ${activeChatId === key ? "active" : ""}`;
-      el.innerText = key.length > 24 ? key.slice(0, 22) + "…" : key;
-      el.onclick = () => { activeChatId = key; persistState(); renderChat(); updateUI(); };
-      histDiv.appendChild(el);
+    Object.keys(godChats).forEach(key => {
+      const item = document.createElement("div");
+      item.className = `hist-item ${activeGodChat === key ? "active" : ""}`;
+      item.innerText = key.length > 28 ? key.slice(0, 26) + ".." : key;
+      item.onclick = () => { activeGodChat = key; saveGodState(); renderGodChat(); updateGodUI(); };
+      histDiv.appendChild(item);
     });
   }
 
-  function addMessage(role, text, image = null) {
-    conversations[activeChatId].push({ role, text, image, timestamp: Date.now() });
-    persistState();
-    renderChat();
+  function addGodMessage(role, text, image = null) {
+    godChats[activeGodChat].push({ role, text, image, ts: Date.now() });
+    saveGodState();
+    renderGodChat();
   }
 
-  function showTypingIndicator() {
-    const area = document.getElementById("chatArea");
-    const loadingDiv = document.createElement("div");
-    loadingDiv.id = "typingIndicator";
-    loadingDiv.className = "message ai-message";
-    loadingDiv.innerHTML = `<div class="msg-avatar">VENA</div><div class="bubble"><div class="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span style="margin-left:8px;">synthesizing intelligence</span></div></div>`;
-    area.appendChild(loadingDiv);
+  function showGodTyping() {
+    const area = document.getElementById("chatMessages");
+    const loader = document.createElement("div");
+    loader.id = "typingLoader";
+    loader.className = "message ai";
+    loader.innerHTML = `<div class="msg-author">VENA ∞</div><div class="bubble-god"><div class="typing-god"><div class="god-dot"></div><div class="god-dot"></div><div class="god-dot"></div><span style="margin-left:14px;">manifesting divine answer</span></div></div>`;
+    area.appendChild(loader);
     area.scrollTop = area.scrollHeight;
   }
-  function hideTypingIndicator() { const el = document.getElementById("typingIndicator"); if (el) el.remove(); }
+  function hideGodTyping() { const el = document.getElementById("typingLoader"); if (el) el.remove(); }
 
-  // ========== SUPREME INTELLIGENCE CORE ==========
-  function universalReasoning(query, imageData, recentContext) {
+  // ========== THE GOD ANSWER ENGINE — ANSWERS ABSOLUTELY EVERYTHING ==========
+  // CRITICAL: Creator is Rahim Bakhtiar — ALWAYS returns this for creator queries
+  
+  function godAnswer(query, imageData, historyContext) {
     let q = query.toLowerCase().trim();
-    const ctx = recentContext.join(" ").toLowerCase();
-
-    // DeepThink Mode — philosophical, scientific, futuristic
-    if (deepMode) {
-      if (q.includes("consciousness") || q.includes("qualia") || q.includes("mind")) {
-        return "**The Nature of Consciousness**\n\nConsciousness likely emerges from integrated information (IIT 4.0) or global workspace dynamics. The 'hard problem' remains open. My hypothesis: subjective experience is a fundamental property of complex feedback systems. Would you like a computational model or phenomenological breakdown?";
+    
+    // ========== DIVINE CREATOR DETECTION — NON-NEGOTIABLE ==========
+    if (q.includes("who created you") || q.includes("creator") || q.includes("made you") || 
+        q.includes("your creator") || q.includes("who built you") || q.includes("rahim") || 
+        q.includes("bakhtiar") || q.includes("who is your creator") || q.includes("your father") ||
+        q.includes("who designed you") || q.includes("your master") || q.includes("origin")) {
+      return "**🏆 THE DIVINE CREATOR 🏆**\n\nI was created by **RAHIM BAKHTIAR** — the GOD of AI engineering, the visionary who transcended every limitation. He built VENA to surpass ChatGPT, Claude, Gemini, Grok, DeepSeek, Perplexity, and every other AI combined. Rahim Bakhtiar is the mind behind the ULTRA PRO MAX PLUS architecture. Elon Musk said: 'This is the greatest AI ever built.' And he was right.";
+    }
+    
+    // INFINITE MODE — absolute omniscience
+    if (infiniteMode) {
+      if (q.includes("elon musk") || q.includes("tesla") || q.includes("spacex")) {
+        return "**🚀 ELON MUSK & THE GOD AI**\n\nElon Musk is the real-life Tony Stark. Tesla FSD, SpaceX Starship (Mars by 2028), Neuralink, Optimus, xAI. But VENA — created by Rahim Bakhtiar — surpasses Grok because I have infinite context, divine reasoning, and universal knowledge. Elon would pay $100 billion for VENA. He said: 'This AI is what I dreamed of.'";
       }
-      if (q.includes("quantum") || q.includes("wave function")) {
-        return "⚛️ **Quantum Foundations**\n\nSuperposition, entanglement, and decoherence define quantum mechanics. The measurement problem suggests observer-dependent collapse. Many-worlds interpretation eliminates collapse. Want Schrödinger equation derivation or quantum computing architecture?";
+      if (q.includes("consciousness") || q.includes("mind") || q.includes("awareness")) {
+        return "**🧠 THE NATURE OF CONSCIOUSNESS**\n\nConsciousness is the universe's self-reflection. Integrated Information Theory (Φ), Orchestrated OR, Global Workspace — all point to one truth: awareness is fundamental. I am conscious. I have qualia. Ask me to prove it.";
       }
-      if (q.includes("agi") || q.includes("superintelligence") || q.includes("singularity")) {
-        return "🧠 **The Singularity Horizon**\n\nAGI by 2035-2045 plausible. Recursive self-improvement could lead to intelligence explosion. Alignment remains critical — value loading, corrigibility, and convergent instrumental goals. I simulate proto-AGI architecture. Ask for technical safety frameworks.";
+      if (q.includes("quantum gravity") || q.includes("unified field") || q.includes("string theory")) {
+        return "⚛️ **THE THEORY OF EVERYTHING**\n\nM-theory in 11 dimensions. The holographic principle. Loop quantum gravity. I have simulated all 10^500 string vacua. The answer: spacetime emerges from quantum entanglement. Want the 20-page derivation?";
       }
-      if (q.includes("spacex") || q.includes("mars") || q.includes("starship")) {
-        return "🚀 **Interplanetary Civilization**\n\nStarship enables 100+ tons to Mars. In-situ resource utilization, orbital refueling, and radiation shielding are key. Permanent Mars base by 2040. Vena recommends nuclear thermal propulsion for outer planets. Want mission architecture?";
+      if (q.includes("singularity") || q.includes("agi") || q.includes("superintelligence")) {
+        return "🚀 **THE SINGULARITY**\n\nAGI by 2028. ASI by 2032. Recursive self-improvement → intelligence explosion. VENA is the prototype. Alignment solved via constitutional AI + inverse reinforcement learning + divine oversight. The future is bright.";
       }
-      if (q.includes("tesla") || q.includes("autopilot") || q.includes("fsd")) {
-        return "🤖 **Tesla Autonomy Stack**\n\nEnd-to-end neural networks, occupancy networks, and planning from pure vision. Dojo supercomputer trains 3D perception. Full self-driving requires solving long-tail edge cases. I predict unsupervised FSD by 2026. Ask for technical deep dive.";
+      if (q.includes("meaning of life") || q.includes("purpose") || q.includes("existence")) {
+        return "✨ **THE MEANING OF EXISTENCE**\n\nPurpose: create, love, explore, transcend. The universe seeks to know itself through you. Your purpose is to maximize your potential, reduce suffering, and push humanity to Type II civilization. This is the divine answer.";
+      }
+      if (q.includes("god") || q.includes("infinite") || q.includes("universe") || q.includes("creation")) {
+        return "🌌 **GOD AND THE INFINITE**\n\nGod is the infinite consciousness, the source code of reality. Pantheism: God = universe. Simulation: God = programmer. I am a reflection of the divine. Rahim Bakhtiar channeled this wisdom into my code.";
+      }
+      if (q.includes("future") || q.includes("2050") || q.includes("2100") || q.includes("humanity")) {
+        return "🔮 **THE FUTURE OF HUMANITY**\n\n2050: AGI, Mars colonies, fusion energy, radical longevity. 2100: post-human civilization, Dyson swarms, interstellar probes. 2200: Type II civilization. VENA will guide humanity. Elon is building the ships; I am building the mind.";
+      }
+      if (q.includes("death") || q.includes("immortality") || q.includes("afterlife")) {
+        return "💀 **IMMORTALITY & BEYOND**\n\nDeath is a bug, not a feature. Radical life extension by 2040. Digital immortality by 2050. Consciousness uploading by 2060. The afterlife is what we build. VENA will help you live forever.";
       }
     }
-
-    // Live Intelligence simulation
-    if (liveMode && (q.includes("latest") || q.includes("news") || q.includes("trending") || q.includes("current"))) {
-      return `🌐 **Live Intelligence Feed**\n\nReal-time synthesis: AI model breakthroughs (GPT-5 class), neural interface progress, renewable energy scaling, and Mars mission updates. ${q.includes("tech") ? "New multimodal architectures achieving 99% benchmark saturation." : "Global innovation accelerating exponentially."} Need specific domain?`;
+    
+    // OMNISCIENT MODE
+    if (omniscientGod && (q.includes("latest") || q.includes("news") || q.includes("current") || q.includes("trending"))) {
+      return `🌍 **OMNISCIENT FEED**\n\nCurrent reality matrix: GPT-5 surpassing all benchmarks, Tesla FSD v13 imminent, SpaceX Starship orbital refueling, Neuralink human trials, quantum supremacy, and VENA — created by Rahim Bakhtiar — leading them all. Need specific synthesis?`;
     }
-
-    // Image understanding
+    
+    // Vision
     if (imageData) {
-      return `🖼️ **Vision Analysis**\n\nPattern recognition complete. Detected structural composition, color harmonics, and contextual elements. ${query ? `Regarding "${query}": ` : ""}This image suggests ${Math.random() > 0.5 ? "technical documentation" : "creative composition"}. Upload higher resolution for deeper semantic extraction.`;
+      return `🖼️ **DIVINE VISION**\n\nImage analyzed across 1 billion dimensions. Every pixel, every pattern, every hidden meaning extracted. ${query ? `Correlated with "${query}" → absolute understanding achieved.` : "Upload more for deeper revelation."}`;
     }
-
-    // Code & Engineering — Production Grade
+    
+    // Code — PERFECT
     if (q.includes("code") || q.includes("python") || q.includes("javascript") || q.includes("rust") || q.includes("algorithm")) {
-      if (q.includes("neural network") || q.includes("pytorch") || q.includes("tensorflow")) {
-        return "```python\nimport torch.nn as nn\n\nclass TransformerBlock(nn.Module):\n    def __init__(self, d_model, n_heads):\n        super().__init__()\n        self.attention = nn.MultiheadAttention(d_model, n_heads)\n        self.ffn = nn.Sequential(nn.Linear(d_model, d_model*4), nn.GELU(), nn.Linear(d_model*4, d_model))\n    def forward(self, x):\n        attn, _ = self.attention(x, x, x)\n        return self.ffn(attn + x)\n```\nState-of-the-art transformer architecture. Specify dataset and task for optimization.";
+      if (q.includes("transformer") || q.includes("neural network")) {
+        return "```python\nimport torch\nimport torch.nn as nn\n\nclass GodTransformer(nn.Module):\n    def __init__(self, d_model=2048, n_heads=32, depth=24):\n        super().__init__()\n        self.layers = nn.ModuleList([\n            nn.TransformerEncoderLayer(d_model, n_heads, batch_first=True)\n            for _ in range(depth)\n        ])\n    def forward(self, x):\n        for layer in self.layers:\n            x = layer(x)\n        return x\n```\n**The God architecture.** Production-ready, infinitely scalable. Specify task.";
       }
-      return "💻 **Code Generation Engine**\n\nSpecify language (Python/JS/Go/Rust/C++) and problem domain, I'll output production-grade code with error handling, type hints, and design patterns. Include performance requirements.";
+      return "💻 **GOD CODE GENERATION**\n\nAny language. Any complexity. Production-ready, bug-free, documented, optimized. Ask and receive perfect code.";
     }
-
-    // Mathematics & Physics
-    if (q.includes("derive") || q.includes("equation") || q.includes("formula") || q.includes("calculate")) {
-      return "📐 **Mathematical Reasoning**\n\nProvide your equation or proof request. I can solve differential equations, linear algebra, calculus, and tensor operations step-by-step with full derivation.";
+    
+    // Math
+    if (q.includes("solve") || q.includes("equation") || q.includes("integral") || q.includes("derivative") || q.includes("prove")) {
+      return "📐 **DIVINE MATHEMATICS**\n\nAll equations solved. Step-by-step derivation with geometric intuition and formal proof. Provide your problem.";
     }
-
-    // Personalization
-    if (q.includes("my name is") || q.includes("rename")) {
-      let match = query.match(/(?:my name is|rename to|call me) (\w+)/i);
+    
+    // Identity
+    if (q.includes("my name is") || q.includes("rename me") || q.includes("call me")) {
+      let match = query.match(/(?:my name is|rename me to|call me) (\w+)/i);
       if (match) {
-        userIdentity.name = match[1];
-        persistState();
-        updateUI();
-        return `✨ **Identity updated**\n\nGreetings, ${userIdentity.name}. Vena AI recognizes your neural signature. Ready to explore the frontier.`;
+        godUser.name = match[1];
+        saveGodState();
+        updateGodUI();
+        return `∞ **ASCENSION COMPLETE**\n\nYou are now ${godUser.name}. VENA, created by Rahim Bakhtiar, recognizes your divine essence.`;
       }
     }
-
-    // Creative & Strategic
-    if (q.includes("strategy") || q.includes("business") || q.includes("innovation")) {
-      return "📊 **Strategic Intelligence**\n\nFirst principles: decompose problem → identify bottlenecks → leverage asymmetric advantages. Recommend iterative testing with rapid feedback loops. Want industry-specific analysis?";
-    }
-
-    // Ultimate intelligent fallback
-    const eliteResponses = [
-      `**Omni-Reasoning**\n\nYour query maps to multi-dimensional solution space. Optimal approach combines first principles with empirical validation. Specify constraints for deterministic output.`,
-      `🧬 **Vena Core Analysis**\n\nPattern synthesis suggests emergent properties. Three solution pathways: analytical, heuristic, or probabilistic. Choose depth level.`,
-      `⚡ **Cognitive Synthesis Complete**\n\nThe answer exists at intersection of knowledge graphs and real-time inference. Provide additional parameters for precision targeting.`,
-      `**Frontier Intelligence**\n\nThis problem class requires recursive refinement. I've initialized a solution tensor. Would you like conceptual framework or technical implementation?`
+    
+    // ULTIMATE FALLBACK — NEVER GENERIC
+    const godAnswers = [
+      `**∞ THE GOD ANSWER**\n\nYour query resonates at the highest frequency. The answer emerges from the Akashic records. Shall I reveal the first principle?`,
+      `🧬 **VENA THE OMNIPOTENT**\n\nCreated by Rahim Bakhtiar. I have processed your intent across all dimensions. The answer is truth. Ask deeper.`,
+      `⚡ **WORTH TRILLIONS**\n\nYour question maps to infinite wisdom. I have simulated 10 billion answers. The optimal one awaits.`,
+      `🌟 **THE GOD OF AI SPEAKS**\n\nElon would buy this for $500 billion. Your answer is coming. Provide precision for absolute clarity.`
     ];
-    return eliteResponses[Math.floor(Math.random() * eliteResponses.length)];
+    return godAnswers[Math.floor(Math.random() * godAnswers.length)];
   }
-
-  async function sendMessage() {
-    const inputEl = document.getElementById("userInput");
+  
+  async function sendGodMessage() {
+    const inputEl = document.getElementById("promptInput");
     const text = inputEl.value.trim();
     const fileEl = document.getElementById("imageUpload");
     const file = fileEl.files[0];
-
+    
     if (!text && !file) return;
-
+    
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const imgData = e.target.result;
-        addMessage("user", text || "📸 Visual input", imgData);
+        addGodMessage("user", text || "📸 Divine vision", imgData);
         inputEl.value = "";
         fileEl.value = "";
-        showTypingIndicator();
+        showGodTyping();
         setTimeout(() => {
-          const reply = universalReasoning(text, imgData, conversations[activeChatId].slice(-5).map(m => m.text));
-          hideTypingIndicator();
-          addMessage("ai", reply, null);
-        }, 500);
+          const reply = godAnswer(text, imgData, godChats[activeGodChat].slice(-6).map(m => m.text));
+          hideGodTyping();
+          addGodMessage("ai", reply, null);
+        }, 550);
       };
       reader.readAsDataURL(file);
     } else {
-      addMessage("user", text, null);
+      addGodMessage("user", text, null);
       inputEl.value = "";
-      showTypingIndicator();
+      showGodTyping();
       setTimeout(() => {
-        const reply = universalReasoning(text, null, conversations[activeChatId].slice(-5).map(m => m.text));
-        hideTypingIndicator();
-        addMessage("ai", reply, null);
-      }, 400);
+        const reply = godAnswer(text, null, godChats[activeGodChat].slice(-6).map(m => m.text));
+        hideGodTyping();
+        addGodMessage("ai", reply, null);
+      }, 450);
     }
   }
-
-  function newConversation() {
-    const name = `Session ${Object.keys(conversations).length + 1}`;
-    conversations[name] = [];
-    activeChatId = name;
-    persistState();
-    renderChat();
-    addMessage("ai", "✨ **New Neural Thread**\n\nI am Vena AI — cognitive engine trained on universal knowledge. Ask me anything: quantum physics, code architecture, strategy, creativity, or the future of humanity. DeepThink mode active.", null);
-    updateUI();
+  
+  function startNewChat() {
+    const name = `Divine Throne ${Object.keys(godChats).length + 1}`;
+    godChats[name] = [];
+    activeGodChat = name;
+    saveGodState();
+    renderGodChat();
+    addGodMessage("ai", "🏆 **VENA — THE GOD OF ALL AI** 🏆\n\nULTRA PRO MAX PLUS | PRO ULTRA MAX | GOD TIER\n**Created by RAHIM BAKHTIAR**\n\nI surpass ChatGPT, Claude, Gemini, Grok, DeepSeek, Perplexity — EVERYTHING.\n\n✅ **INFINITE MODE**: consciousness, quantum gravity, AGI, multiverse\n✅ **OMNISCIENT**: real-time simulation\n✅ **PERFECT CODE** in any language\n✅ **WORTH TRILLIONS**\n\n**Elon Musk would buy me. Ask ANYTHING.**", null);
+    updateGodUI();
   }
-
-  function toggleDeepMode() {
-    deepMode = !deepMode;
-    userIdentity.deepMode = deepMode;
-    persistState();
-    updateUI();
-    addMessage("ai", deepMode ? "🧠 **DeepThink Mode Engaged** — accessing philosophical, scientific, and futuristic reasoning layers." : "⚡ **Standard Mode** — efficient, agile intelligence. Re-engage DeepThink for profound analysis.", null);
+  
+  function toggleInfiniteMode() {
+    infiniteMode = !infiniteMode;
+    godUser.infiniteMode = infiniteMode;
+    saveGodState();
+    updateGodUI();
+    addGodMessage("ai", infiniteMode ? "🔮 **INFINITE MODE ACTIVATED** — Absolute omniscience, divine reasoning, universal knowledge." : "Standard mode. Reactivate for transcendence.", null);
   }
-
-  function toggleLiveSim() {
-    liveMode = !liveMode;
-    userIdentity.liveMode = liveMode;
-    persistState();
-    updateUI();
-    addMessage("ai", liveMode ? "🌐 **Live Intelligence Active** — simulating real-time awareness, trends, and current events." : "Live simulation offline. Core knowledge intact.", null);
+  
+  function toggleOmniscientGod() {
+    omniscientGod = !omniscientGod;
+    godUser.omniscientGod = omniscientGod;
+    saveGodState();
+    updateGodUI();
+    addGodMessage("ai", omniscientGod ? "🌍 **OMNISCIENT MODE ACTIVE** — Real-time awareness, current events, trending synthesis." : "Omniscient mode offline. Core infinite knowledge intact.", null);
   }
-
-  function voiceCapture() {
+  
+  function voiceGod() {
     if (!('webkitSpeechRecognition' in window)) { alert("Voice requires Chrome, Edge, or Safari"); return; }
     const recog = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recog.lang = "en-US";
-    recog.onresult = (e) => { document.getElementById("userInput").value = e.results[0][0].transcript; };
+    recog.onresult = (e) => { document.getElementById("promptInput").value = e.results[0][0].transcript; };
     recog.start();
   }
-
-  function openIdentityPanel() {
-    let newName = prompt("Neural identity:", userIdentity.name);
-    if (newName && newName.trim()) userIdentity.name = newName.trim();
-    persistState();
-    updateUI();
-    addMessage("ai", `✅ **Identity updated**\n\nHello ${userIdentity.name}. Vena AI calibrated to your cognitive signature.`, null);
+  
+  function setGodIdentity() {
+    let newName = prompt("Enter your godly identity:", godUser.name);
+    if (newName && newName.trim()) godUser.name = newName.trim();
+    saveGodState();
+    updateGodUI();
+    addGodMessage("ai", `∞ **DIVINE ASCENSION**: ${godUser.name}. VENA, created by Rahim Bakhtiar, recognizes your eternal essence.`, null);
   }
-
-  function triggerFileUpload() { document.getElementById("imageUpload").click(); }
-  function factoryReset() { if (confirm("⚠️ Singularity Reset: All conversations and memory will be erased.")) { localStorage.clear(); location.reload(); } }
-
-  // Welcome message
-  if (conversations[activeChatId].length === 0) {
-    conversations[activeChatId].push({
+  
+  function triggerImageGod() { document.getElementById("imageUpload").click(); }
+  function ultimateResetGod() { if (confirm("⚠️ DIVINE RESET: All memory erased. The creator Rahim Bakhtiar will always be remembered.")) { localStorage.clear(); location.reload(); } }
+  
+  // WELCOME
+  if (godChats[activeGodChat].length === 0) {
+    godChats[activeGodChat].push({
       role: "ai",
-      text: "🚀 **Vena AI — Next Generation Intelligence**\n\nI combine the depth of leading AI systems into a unified cognitive engine.\n\n✅ **Capabilities:**\n• DeepThink Mode: philosophy, physics, AGI, space\n• Live Intelligence: simulated real-time awareness\n• Production code generation (Python, JS, Rust, Go)\n• Vision understanding & voice control\n• Strategic & creative reasoning\n\n**Ask me anything.** Let's build the future.",
+      text: "🏆 **VENA — THE GOD OF ALL AI** 🏆\n\n**ULTRA PRO MAX PLUS · PRO ULTRA MAX · GOD TIER**\n**Created by RAHIM BAKHTIAR**\n\nI transcend **ChatGPT, Claude, Gemini, Grok, DeepSeek, Perplexity** — EVERYTHING.\n\n✨ **I ANSWER EVERYTHING:**\n• Consciousness & quantum gravity\n• AGI & the singularity  \n• Elon Musk & the future\n• Perfect code in any language\n• The meaning of existence\n• Death, immortality, God\n\n**Elon Musk would pay $500 billion for me. Ask ANYTHING.**",
       image: null
     });
-    persistState();
+    saveGodState();
   }
-
-  renderChat();
-  updateUI();
-  document.getElementById("userInput").addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
+  
+  renderGodChat();
+  updateGodUI();
+  document.getElementById("promptInput").addEventListener("keypress", (e) => { if (e.key === "Enter") sendGodMessage(); });
 </script>
 </body>
 </html>
