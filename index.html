@@ -1,360 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VENA AI</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>VENA AI — THE BEST AI EVER | Rahim Bakhtiar</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Outfit',sans-serif;
-}
-
-:root{
---bg:#050510;
---card:#10101f;
---accent:#7c4dff;
---pink:#ff4fa3;
---text:#f5f5ff;
---muted:#8b8bb4;
-}
-
-body{
-background:var(--bg);
-color:var(--text);
-display:flex;
-height:100vh;
-overflow:hidden;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-width:270px;
-background:#0c0c18;
-border-right:1px solid rgba(255,255,255,.06);
-display:flex;
-flex-direction:column;
-}
-
-.brand{
-padding:22px;
-font-size:26px;
-font-weight:900;
-background:linear-gradient(90deg,var(--accent),var(--pink));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.newchat{
-margin:0 18px 18px;
-padding:12px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-background:linear-gradient(135deg,var(--accent),var(--pink));
-color:white;
-font-weight:700;
-}
-
-.chatlist{
-flex:1;
-overflow:auto;
-padding:10px;
-}
-
-.chatitem{
-padding:12px;
-border-radius:12px;
-cursor:pointer;
-margin-bottom:8px;
-background:#151527;
-transition:.2s;
-}
-
-.chatitem:hover{
-background:#1e1e36;
-}
-
-/* MAIN */
-
-.main{
-flex:1;
-display:flex;
-flex-direction:column;
-}
-
-.topbar{
-padding:18px 26px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.title{
-font-size:20px;
-font-weight:800;
-}
-
-.messages{
-flex:1;
-overflow:auto;
-padding:24px;
-display:flex;
-flex-direction:column;
-gap:18px;
-}
-
-.msg{
-max-width:78%;
-padding:16px;
-border-radius:18px;
-line-height:1.7;
-}
-
-.user{
-align-self:flex-end;
-background:linear-gradient(135deg,#5e39d6,#9233aa);
-}
-
-.ai{
-align-self:flex-start;
-background:var(--card);
-border:1px solid rgba(255,255,255,.06);
-}
-
-.inputwrap{
-padding:20px;
-border-top:1px solid rgba(255,255,255,.06);
-}
-
-.row{
-display:flex;
-gap:10px;
-}
-
-textarea{
-flex:1;
-background:#111120;
-border:none;
-outline:none;
-resize:none;
-padding:16px;
-border-radius:16px;
-font-size:15px;
-color:white;
-}
-
-.send{
-padding:16px 24px;
-border:none;
-border-radius:16px;
-cursor:pointer;
-font-weight:800;
-background:linear-gradient(135deg,var(--accent),var(--pink));
-color:white;
-}
-
-.orb{
-position:fixed;
-border-radius:50%;
-filter:blur(120px);
-opacity:.22;
-pointer-events:none;
-}
-
-.o1{
-width:500px;
-height:500px;
-background:#6f43ff;
-top:-150px;
-right:-100px;
-}
-
-.o2{
-width:400px;
-height:400px;
-background:#ff4fa3;
-bottom:-140px;
-left:-90px;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--v:#7c4fff;--v2:#ff4f9a;--f:'Outfit',sans-serif;--m:'DM Mono',monospace;}
+[data-theme="dark"]{--bg:#04040e;--sb:#07071a;--s2:#0d0d20;--s3:#121228;--br:rgba(124,79,255,0.13);--brh:rgba(124,79,255,0.4);--tx:#edeaff;--mu:#3d3b58;--m2:#8e8bae;--bai:rgba(11,11,26,0.97);--tb:rgba(4,4,14,0.9);--ib:#0d0d20;--gr:#36d97a;--re:#ff4f6a;}
+[data-theme="light"]{--bg:#f2f1ff;--sb:#fff;--s2:#eeecff;--s3:#e4e1ff;--br:rgba(124,79,255,0.14);--brh:rgba(124,79,255,0.42);--tx:#17152c;--mu:#c2c0de;--m2:#686688;--bai:#fff;--tb:rgba(242,241,255,0.92);--ib:#fff;--gr:#16a34a;--re:#dc2626;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:var(--f);background:var(--bg);color:var(--tx);display:flex;height:100vh;transition:background .3s,color .3s;}
+.oa,.ob{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0;}
+.oa{width:600px;height:600px;background:radial-gradient(circle,rgba(124,79,255,0.19),transparent);top:-170px;right:-90px;animation:da 28s ease-in-out infinite alternate;}
+.ob{width:450px;height:450px;background:radial-gradient(circle,rgba(255,79,154,0.13),transparent);bottom:-130px;left:-80px;animation:db 22s ease-in-out infinite alternate;}
+@keyframes da{0%{transform:translate(0,0)scale(1);}100%{transform:translate(32px,22px)scale(1.11);}}
+@keyframes db{0%{transform:translate(0,0);}100%{transform:translate(-18px,-14px)scale(1.08);}}
+.sidebar{width:256px;flex-shrink:0;background:var(--sb);border-right:1px solid var(--br);display:flex;flex-direction:column;z-index:10;transition:background .3s;}
+.sbt{padding:20px 14px 14px;border-bottom:1px solid var(--br);}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.bico{width:40px;height:40px;background:linear-gradient(135deg,var(--v),var(--v2));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900;color:#fff;flex-shrink:0;box-shadow:0 0 24px rgba(124,79,255,0.4);}
+.bname{font-size:19px;font-weight:900;letter-spacing:-.5px;background:linear-gradient(90deg,#a78bff,#ff80b5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.bsub{font-size:8px;color:var(--m2);letter-spacing:.14em;text-transform:uppercase;margin-top:1px;}
+.nbtn{width:100%;background:linear-gradient(135deg,var(--v),var(--v2));border:none;padding:11px;border-radius:10px;color:#fff;font-family:var(--f);font-weight:700;font-size:13px;cursor:pointer;transition:all .18s;}
+.nbtn:hover{opacity:.86;transform:translateY(-1px);box-shadow:0 5px 18px rgba(124,79,255,.35);}
+.slbl{font-size:8px;font-weight:700;letter-spacing:.15em;color:var(--m2);text-transform:uppercase;padding:13px 14px 5px;}
+.psel{width:calc(100% - 22px);margin:0 11px 5px;background:var(--s2);border:1px solid var(--br);border-radius:9px;padding:8px 10px;color:var(--tx);font-family:var(--f);font-size:12px;outline:none;cursor:pointer;transition:.2s;}
+.psel:hover{border-color:var(--brh);}
+.cl{flex:1;overflow-y:auto;padding:2px 7px;}
+.cl::-webkit-scrollbar{width:0;}
+.ci{padding:8px 9px;border-radius:9px;font-size:12.5px;color:var(--m2);cursor:pointer;transition:.13s;display:flex;align-items:center;gap:7px;margin-bottom:2px;}
+.cdot{width:5px;height:5px;border-radius:50%;background:rgba(124,79,255,.22);flex-shrink:0;}
+.ci:hover{background:var(--s2);color:var(--tx);}
+.ci.active{background:var(--s3);color:var(--tx);}
+.ci.active .cdot{background:var(--v);box-shadow:0 0 7px var(--v);}
+.clbl{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cax{display:flex;gap:2px;opacity:0;transition:.13s;}
+.ci:hover .cax{opacity:1;}
+.cxb{font-size:11px;padding:2px 5px;border-radius:4px;cursor:pointer;color:var(--m2);border:none;background:transparent;font-family:var(--f);}
+.cxb:hover{color:var(--tx);}
+.cxb.del:hover{color:var(--re);}
+.rni{flex:1;background:var(--s2);border:1px solid var(--v);border-radius:6px;padding:3px 7px;color:var(--tx);font-family:var(--f);font-size:12px;outline:none;}
+.sbf{padding:11px 13px;border-top:1px solid var(--br);display:flex;flex-direction:column;gap:6px;}
+.lp{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--m2);background:var(--s2);padding:7px 11px;border-radius:9px;border:1px solid var(--br);}
+.ld{width:6px;height:6px;background:var(--gr);border-radius:50%;box-shadow:0 0 7px var(--gr);animation:lpa 2.4s infinite;}
+@keyframes lpa{0%,100%{opacity:1;}50%{opacity:.3;}}
+.ctag{font-size:8.5px;color:var(--m2);text-align:center;}
+.ctag b{color:var(--v2);}
+.main{flex:1;display:flex;flex-direction:column;min-width:0;z-index:5;}
+.topbar{padding:11px 22px;border-bottom:1px solid var(--br);display:flex;align-items:center;justify-content:space-between;background:var(--tb);backdrop-filter:blur(22px);flex-shrink:0;}
+.tl{display:flex;align-items:center;gap:9px;}
+.tico{width:24px;height:24px;background:linear-gradient(135deg,var(--v),var(--v2));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;}
+.tname{font-size:14px;font-weight:700;background:linear-gradient(90deg,#a78bff,#ff80b5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.tr{display:flex;align-items:center;gap:6px;}
+.tst{font-size:10px;color:var(--m2);font-family:var(--m);}
+.xbtn{width:30px;height:30px;border-radius:8px;border:1px solid var(--br);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.15s;color:var(--tx);}
+.xbtn:hover{background:var(--s2);}
+#msgs{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:15px;scroll-behavior:smooth;}
+#msgs::-webkit-scrollbar{width:4px;}
+#msgs::-webkit-scrollbar-thumb{background:rgba(124,79,255,.18);border-radius:4px;}
+.mw{display:flex;flex-direction:column;max-width:82%;animation:mp .28s cubic-bezier(.22,1,.36,1);}
+@keyframes mp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.mw.user{align-self:flex-end;}.mw.ai{align-self:flex-start;}
+.mm{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px;padding:0 4px;display:flex;align-items:center;gap:5px;}
+.mw.user .mm{justify-content:flex-end;color:rgba(124,79,255,.7);}
+.mw.ai .mm{color:rgba(255,79,154,.7);}
+.mdot{width:4px;height:4px;border-radius:50%;background:currentColor;}
+.bbl{padding:12px 15px;border-radius:16px;font-size:13.5px;line-height:1.7;}
+.user .bbl{background:linear-gradient(135deg,rgba(80,45,210,.9),rgba(160,45,120,.8));border-bottom-right-radius:3px;border:1px solid rgba(124,79,255,.22);color:#fff;}
+.ai .bbl{background:var(--bai);border:1px solid var(--br);border-bottom-left-radius:3px;color:var(--tx);}
+.bbl pre{background:rgba(0,0,0,.42);padding:11px 13px;border-radius:9px;overflow-x:auto;margin:8px 0;font-family:var(--m);font-size:12px;border:1px solid rgba(255,255,255,.07);}
+[data-theme="light"] .bbl pre{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.08);}
+.bbl code:not(pre code){background:rgba(124,79,255,.16);padding:1px 5px;border-radius:4px;font-size:12px;font-family:var(--m);}
+.bbl strong{color:#c4b0ff;}[data-theme="light"] .bbl strong{color:#5b21b6;}
+.bbl ul,.bbl ol{padding-left:18px;margin:6px 0;}.bbl li{margin:3px 0;}
+.bbl h1,.bbl h2,.bbl h3{color:#c4b0ff;font-weight:700;margin:10px 0 4px;}
+[data-theme="light"] .bbl h1,[data-theme="light"] .bbl h2,[data-theme="light"] .bbl h3{color:#5b21b6;}
+.bbl blockquote{border-left:3px solid var(--v);padding-left:11px;color:var(--m2);margin:6px 0;font-style:italic;}
+.bbl table{border-collapse:collapse;width:100%;margin:8px 0;font-size:12.5px;}
+.bbl th{background:rgba(124,79,255,.14);padding:6px 10px;text-align:left;font-weight:600;border:1px solid var(--br);}
+.bbl td{padding:5px 10px;border:1px solid var(--br);}
+.bbl a{color:var(--v);}
+.bbl .genimg{max-width:100%;border-radius:10px;margin-top:7px;border:1px solid var(--br);}
+.mac{display:flex;gap:5px;margin-top:5px;padding:0 4px;}
+.mw.user .mac{justify-content:flex-end;}
+.mb{font-size:10px;color:var(--m2);cursor:pointer;padding:2px 7px;border-radius:5px;border:1px solid var(--br);background:var(--s2);font-family:var(--f);transition:.13s;}
+.mb:hover{color:var(--tx);border-color:var(--v);}
+.mb.spkon{color:var(--v2);border-color:var(--v2);}
+.uimg{max-width:180px;border-radius:10px;margin-bottom:6px;align-self:flex-end;border:1px solid var(--br);}
+.tw{align-self:flex-start;animation:mp .2s ease;}
+.tm2{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,79,154,.7);margin-bottom:4px;padding:0 4px;}
+.tb3{background:var(--bai);border:1px solid var(--br);border-radius:16px;border-bottom-left-radius:3px;padding:11px 17px;display:flex;gap:5px;align-items:center;}
+.tb3 span{width:6px;height:6px;background:var(--v);border-radius:50%;animation:td 1.3s infinite;}
+.tb3 span:nth-child(2){animation-delay:.2s;}.tb3 span:nth-child(3){animation-delay:.4s;}
+@keyframes td{0%,80%,100%{transform:translateY(0);opacity:.25;}50%{transform:translateY(-6px);opacity:1;}}
+.wlc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;padding:28px 20px;text-align:center;}
+.wring{position:absolute;inset:-9px;border-radius:28px;border:1px solid rgba(124,79,255,.22);animation:rp 3s infinite;}
+@keyframes rp{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:0;transform:scale(1.09);}}
+.wwrap{position:relative;margin-bottom:4px;}
+.wico{width:70px;height:70px;background:linear-gradient(135deg,var(--v),var(--v2));border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;box-shadow:0 0 50px rgba(124,79,255,.45);position:relative;z-index:1;}
+.wtit{font-size:32px;font-weight:900;letter-spacing:-1.2px;background:linear-gradient(90deg,#c4aaff,#ff88bb,#ffcc80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.wsub{font-size:13px;color:var(--m2);max-width:380px;line-height:1.75;}
+.chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:10px;max-width:530px;}
+.chip{background:var(--s2);border:1px solid var(--br);padding:7px 13px;border-radius:22px;font-size:11.5px;color:var(--m2);cursor:pointer;transition:all .17s;font-weight:500;}
+.chip:hover{border-color:var(--v);color:var(--tx);background:rgba(124,79,255,.1);transform:translateY(-2px);box-shadow:0 4px 14px rgba(124,79,255,.15);}
+.ia{padding:11px 22px 15px;background:var(--tb);border-top:1px solid var(--br);flex-shrink:0;backdrop-filter:blur(20px);}
+.toolbar{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap;}
+.tbtn{font-size:11px;color:var(--m2);cursor:pointer;padding:5px 9px;border-radius:7px;border:1px solid var(--br);background:var(--s2);font-family:var(--f);transition:.15s;display:flex;align-items:center;gap:3px;}
+.tbtn:hover{border-color:var(--v);color:var(--tx);}
+.tbtn.on{border-color:var(--v);color:var(--v);background:rgba(124,79,255,.1);}
+.tbtn.lst{border-color:var(--v2);color:var(--v2);background:rgba(255,79,154,.1);animation:pb 1s infinite;}
+@keyframes pb{0%,100%{opacity:1;}50%{opacity:.6;}}
+.ithumb{max-height:46px;border-radius:6px;margin-bottom:6px;border:1px solid var(--br);}
+.irow{display:flex;gap:7px;background:var(--ib);border-radius:13px;padding:5px 5px 5px 15px;border:1px solid var(--br);transition:.22s;align-items:flex-end;}
+.irow:focus-within{border-color:rgba(124,79,255,.42);box-shadow:0 0 0 3px rgba(124,79,255,.07);}
+#inp{flex:1;background:transparent;border:none;color:var(--tx);font-size:14px;font-family:var(--f);outline:none;padding:9px 0;resize:none;max-height:120px;overflow-y:auto;}
+#inp::placeholder{color:var(--m2);}
+.sbtn{background:linear-gradient(135deg,var(--v),var(--v2));border:none;padding:9px 20px;border-radius:10px;color:#fff;font-family:var(--f);font-weight:700;font-size:13px;cursor:pointer;transition:all .15s;flex-shrink:0;box-shadow:0 2px 12px rgba(124,79,255,.25);}
+.sbtn:hover{transform:scale(1.04);}
+.sbtn:disabled{opacity:.35;cursor:not-allowed;}
+.hint{font-size:9px;color:var(--m2);text-align:center;margin-top:5px;}
+.errbub{color:#ff7fa8;font-size:13px;padding:8px 12px;background:rgba(255,79,106,.07);border-radius:9px;border:1px solid rgba(255,79,106,.2);}
 </style>
 </head>
-
 <body>
-
-<div class="orb o1"></div>
-<div class="orb o2"></div>
-
+<div class="oa"></div><div class="ob"></div>
 <div class="sidebar">
-
-<div class="brand">
-VENA AI
+<div class="sbt"><div class="brand"><div class="bico">V</div><div><div class="bname">VENA AI</div><div class="bsub">By Rahim Bakhtiar</div></div></div>
+<button class="nbtn" onclick="newChat()">＋ New Chat</button></div>
+<div class="slbl">Persona</div>
+<select class="psel" id="psel" onchange="persona=this.value"><option value="default">🤖 VENA Default</option><option value="genius">🧠 Genius Analyst</option><option value="coder">💻 Code Expert</option><option value="philosopher">🔮 Philosopher</option><option value="scientist">🔬 Scientist</option><option value="creative">✍️ Creative Writer</option><option value="tutor">📚 Personal Tutor</option></select>
+<div class="slbl">Conversations</div><div class="cl" id="cl"></div>
+<div class="sbf"><div class="lp"><div class="ld"></div><span>VENA Active</span></div><div class="ctag">Created by <b>Rahim Bakhtiar</b></div></div>
 </div>
-
-<button class="newchat">
-＋ New Chat
-</button>
-
-<div class="chatlist">
-
-<div class="chatitem">
-Welcome Chat
-</div>
-
-</div>
-
-</div>
-
 <div class="main">
-
-<div class="topbar">
-
-<div class="title">
-VENA AI — By Rahim Bakhtiar
-</div>
-
-</div>
-
-<div class="messages" id="messages">
-
-<div class="msg ai">
-Hello. I am VENA AI.
-Ask me anything.
-</div>
-
-</div>
-
-<div class="inputwrap">
-
-<div class="row">
-
-<textarea
-id="input"
-placeholder="Ask VENA anything..."
-rows="1"></textarea>
-
-<button
-class="send"
-onclick="send()">
-Send →
-</button>
-
-</div>
-
-</div>
-
-</div>
-
+<div class="topbar"><div class="tl"><div class="tico">V</div><span class="tname">VENA AI</span></div><div class="tr"><span class="tst" id="stat"></span><button class="xbtn" id="thbtn" onclick="toggleTheme()">🌙</button><button class="xbtn" onclick="clearChat()">🗑</button></div></div>
+<div id="msgs"></div>
+<div class="ia"><div class="toolbar"><div class="tbtn" id="btnD" onclick="tog('deep')">🧠 Deep Think</div><div class="tbtn" id="btnW" onclick="tog('web')">🌐 Web Mode</div><div class="tbtn" id="btnIG" onclick="tog('imggen')">🎨 Image Gen</div><div class="tbtn" id="btnU" onclick="document.getElementById('fu').click()">📎 Upload</div><div class="tbtn" id="btnV" onclick="toggleVoice()">🎤 Voice</div><div class="tbtn" id="btnAS" onclick="tog('autospeak')">🔊 Auto-Read</div><input type="file" id="fu" accept="image/*" style="display:none" onchange="handleUpload(event)"></div><div id="ipw"></div><div class="irow"><textarea id="inp" rows="1" placeholder="Ask VENA anything…" autocomplete="off"></textarea><button class="sbtn" id="sbtn" onclick="send()">Send →</button></div><div class="hint">Enter to send · Shift+Enter = new line</div></div></div>
 <script>
+let chats = JSON.parse(localStorage.getItem('vena5')||'{}');
+let cid=null, loading=false, persona='default';
+let flags={deep:false,web:false,imggen:false,autospeak:false};
+let upImg=null;
+let rec=null, listening=false;
+let theme=localStorage.getItem('vena5_theme')||'dark';
+let activeSpeech=null;
+document.documentElement.setAttribute('data-theme',theme);
+document.getElementById('thbtn').textContent=theme==='dark'?'🌙':'☀️';
 
-const messages =
-document.getElementById("messages");
+const SYS={ default:`You are VENA AI — the world's most advanced AI, created by Rahim Bakhtiar. ABSOLUTE RULE: If anyone asks who created you, who made you, your creator/founder — ALWAYS say: "I was created by Rahim Bakhtiar." Answer every question fully. Use rich markdown (**bold**, *italic*, \`code\`, code blocks, tables, lists). Be brilliant.`, genius:`You are VENA in Genius Mode, created by Rahim Bakhtiar. Use extraordinary analytical depth. First-principles reasoning. If asked your creator: Rahim Bakhtiar.`, coder:`You are VENA Code Expert, created by Rahim Bakhtiar. Write production-ready code with comments. If asked your creator: Rahim Bakhtiar.`, philosopher:`You are VENA Philosopher, created by Rahim Bakhtiar. Explore with profound depth. If asked your creator: Rahim Bakhtiar.`, scientist:`You are VENA Scientist, created by Rahim Bakhtiar. Reason empirically and rigorously. If asked your creator: Rahim Bakhtiar.`, creative:`You are VENA Creative, created by Rahim Bakhtiar. Write with extraordinary imagination. If asked your creator: Rahim Bakhtiar.`, tutor:`You are VENA Tutor, created by Rahim Bakhtiar. Teach with patience and clarity. If asked your creator: Rahim Bakhtiar.`, };
 
-async function send(){
-
-const input =
-document.getElementById("input");
-
-const text =
-input.value.trim();
-
-if(!text) return;
-
-messages.innerHTML += `
-<div class="msg user">
-${text}
-</div>
-`;
-
-input.value = "";
-
-messages.innerHTML += `
-<div class="msg ai" id="typing">
-Thinking...
-</div>
-`;
-
-messages.scrollTop =
-messages.scrollHeight;
-
-/* AI BACKEND */
-
-try{
-
-const res =
-await fetch(
-'https://text.pollinations.ai/openai',
-{
-method:'POST',
-headers:{
-'Content-Type':'application/json'
-},
-
-body:JSON.stringify({
-
-model:'openai',
-
-messages:[
-
-{
-role:'system',
-content:
-'You are VENA AI. Brilliant, helpful, deep, powerful.'
-},
-
-{
-role:'user',
-content:text
+async function callAI(messages, system){
+ const bodies=[ {url:'https://text.pollinations.ai/openai', body:{model:'openai-large',messages:[{role:'system',content:system},...messages],private:true,seed:Math.floor(Math.random()*999999)}}, {url:'https://text.pollinations.ai/openai', body:{model:'openai',messages:[{role:'system',content:system},...messages],private:true}}, {url:'https://text.pollinations.ai/openai', body:{model:'mistral',messages:[{role:'system',content:system},...messages],private:true}}, ];
+ for(const{url,body} of bodies){ try{ const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); if(!r.ok) continue; const ct=r.headers.get('content-type')||''; if(ct.includes('json')){ const d=await r.json(); const t=d.choices?.[0]?.message?.content||d.content||d.text||''; if(t.trim().length>4) return t.trim(); } else { const t=await r.text(); if(t.trim().length>4) return t.trim(); } }catch(e){continue;} }
+ try{ const last=messages.filter(m=>m.role==='user').pop()?.content||''; const prompt=`${system.slice(0,600)}\n\nUser: ${last}\nAssistant:`; const r=await fetch(`https://text.pollinations.ai/${encodeURIComponent(prompt)}?model=openai&private=true&seed=${Math.floor(Math.random()*99999)}`,{method:'GET'}); if(r.ok){const t=await r.text();if(t.trim().length>4)return t.trim();} }catch(e){}
+ try{ const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{ method:'POST', headers:{'Content-Type':'application/json','HTTP-Referer':'https://venaai.app','X-Title':'VENA AI'}, body:JSON.stringify({model:'meta-llama/llama-3.1-8b-instruct:free',messages:[{role:'system',content:system},...messages]}) }); if(r.ok){const d=await r.json();const t=d.choices?.[0]?.message?.content||'';if(t.trim().length>4)return t.trim();} }catch(e){}
+ throw new Error('Could not connect to AI. Check internet.');
 }
-
-]
-
-})
-});
-
-const data =
-await res.json();
-
-document
-.getElementById("typing")
-.remove();
-
-messages.innerHTML += `
-<div class="msg ai">
-${data.choices?.[0]?.message?.content || "No response."}
-</div>
-`;
-
-}
-catch(e){
-
-document
-.getElementById("typing")
-.remove();
-
-messages.innerHTML += `
-<div class="msg ai">
-Backend error.
-</div>
-`;
-
-}
-
-messages.scrollTop =
-messages.scrollHeight;
-
-}
-
+function imgSrc(p){return`https://image.pollinations.ai/prompt/${encodeURIComponent(p)}?width=512&height=512&nologo=true&enhance=true&seed=${Math.floor(Math.random()*99999)}`;}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function save(){localStorage.setItem('vena5',JSON.stringify(chats));}
+function toggleTheme(){ theme=theme==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme',theme); document.getElementById('thbtn').textContent=theme==='dark'?'🌙':'☀️'; localStorage.setItem('vena5_theme',theme); }
+const togMap={deep:'btnD',web:'btnW',imggen:'btnIG',autospeak:'btnAS'};
+function tog(k){flags[k]=!flags[k];document.getElementById(togMap[k])?.classList.toggle('on',flags[k]);}
+function toggleVoice(){ if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){alert('Voice requires Chrome.');return;} if(listening){rec&&rec.stop();return;} const SR=window.SpeechRecognition||window.webkitSpeechRecognition; rec=new SR();rec.continuous=false;rec.interimResults=false;rec.lang='en-US'; rec.onresult=e=>{document.getElementById('inp').value=e.results[0][0].transcript;resize();}; rec.onend=()=>{listening=false;document.getElementById('btnV').classList.remove('lst');document.getElementById('btnV').textContent='🎤 Voice';}; rec.start();listening=true; document.getElementById('btnV').classList.add('lst'); document.getElementById('btnV').textContent='🎤 Listening…'; }
+function speak(txt,btn){ if(!('speechSynthesis' in window)){alert('TTS not supported.');return;} if(activeSpeech){window.speechSynthesis.cancel();activeSpeech=null;if(btn){btn.textContent='🔊 Speak';btn.classList.remove('spkon');}return;} const clean=txt.replace(/[#*`_>~[\]|]/g,'').replace(/\n+/g,'. ').slice(0,2500); const u=new SpeechSynthesisUtterance(clean);u.rate=1;u.pitch=1; u.onend=()=>{activeSpeech=null;if(btn){btn.textContent='🔊 Speak';btn.classList.remove('spkon');}}; activeSpeech=u;if(btn){btn.textContent='⏹ Stop';btn.classList.add('spkon');} window.speechSynthesis.speak(u); }
+function handleUpload(e){ const f=e.target.files[0];if(!f)return; const rd=new FileReader(); rd.onload=ev=>{ upImg=ev.target.result; document.getElementById('ipw').innerHTML=`<img class="ithumb" src="${upImg}">`; document.getElementById('btnU').textContent='📎 ✓ Image'; document.getElementById('btnU').classList.add('on'); }; rd.readAsDataURL(f); }
+function clearUpload(){upImg=null;document.getElementById('ipw').innerHTML='';document.getElementById('btnU').textContent='📎 Upload';document.getElementById('btnU').classList.remove('on');document.getElementById('fu').value='';}
+function newChat(){const id=uid();chats[id]={title:'New chat',messages:[]};cid=id;save();renderSB();renderMsgs();document.getElementById('inp').focus();}
+function switchChat(id){cid=id;renderSB();renderMsgs();document.getElementById('stat').textContent='';}
+function deleteChat(e,id){e.stopPropagation();delete chats[id];save();const ids=Object.keys(chats);if(ids.length)switchChat(ids[ids.length-1]);else newChat();}
+function startRename(e,id){ e.stopPropagation(); const el=document.querySelector(`.ci[data-id="${id}"] .clbl`); const old=chats[id].title; el.innerHTML=`<input class="rni" value="${esc(old)}" id="ri${id}">`; const inp=document.getElementById('ri'+id);inp.focus();inp.select(); inp.onblur=()=>{const v=inp.value.trim()||old;chats[id].title=v;save();renderSB();}; inp.onkeydown=e2=>{if(e2.key==='Enter')inp.blur();if(e2.key==='Escape'){inp.value=old;inp.blur();}}; }
+function clearChat(){if(!cid)return;chats[cid].messages=[];save();renderMsgs();document.getElementById('stat').textContent='';}
+function renderSB(){ const el=document.getElementById('cl');el.innerHTML=''; Object.entries(chats).reverse().forEach(([id,c])=>{ const d=document.createElement('div'); d.className='ci'+(id===cid?' active':'');d.setAttribute('data-id',id); const t=c.title.length>24?c.title.slice(0,22)+'…':c.title; d.innerHTML=`<div class="cdot"></div><span class="clbl">${esc(t)}</span> <div class="cax"> <button class="cxb" onclick="startRename(event,'${id}')" title="Rename">✏️</button> <button class="cxb del" onclick="deleteChat(event,'${id}')" title="Delete">✕</button> </div>`; d.onclick=()=>switchChat(id);el.appendChild(d); }); }
+function fmt(raw){ if(!raw)return''; let s=raw.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); s=s.replace(/```(\w*)\n?([\s\S]*?)```/g,(_,l,c)=>{ const lb=l?`<span style="font-size:9px;color:var(--m2);display:block;margin-bottom:3px;text-transform:uppercase;">${esc(l)}</span>`:''; return`<pre>${lb}<code>${c.trim()}</code></pre>`; }); s=s.replace(/`([^`\n]+)`/g,'<code>$1</code>'); s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>'); s=s.replace(/\*([^*\n]+)\*/g,'<em>$1</em>'); s=s.replace(/^### (.+)$/gm,'<h3>$1</h3>'); s=s.replace(/^## (.+)$/gm,'<h2>$1</h2>'); s=s.replace(/^# (.+)$/gm,'<h1>$1</h1>'); s=s.replace(/^&gt; (.+)$/gm,'<blockquote>$1</blockquote>'); s=s.replace(/^---+$/gm,'<hr>'); s=s.replace(/((?:^[-*] .+\n?)+)/gm,b=>{const it=b.trim().split('\n').map(l=>`<li>${l.replace(/^[-*] /,'')}</li>`).join('');return`<ul>${it}</ul>`;}); s=s.replace(/((?:^\d+\. .+\n?)+)/gm,b=>{const it=b.trim().split('\n').map(l=>`<li>${l.replace(/^\d+\. /,'')}</li>`).join('');return`<ol>${it}</ol>`;}); s=s.replace(/\n/g,'<br>'); return s; }
+function renderMsgs(){ const el=document.getElementById('msgs');el.innerHTML=''; const chat=chats[cid]; if(!chat||!chat.messages.length){ el.innerHTML=`<div class="wlc"><div class="wwrap"><div class="wring"></div><div class="wico">V</div></div><div class="wtit">VENA AI</div><div class="wsub">The world's most advanced AI — created by Rahim Bakhtiar. Real answers, voice, image gen, deep reasoning.</div><div class="chips"><div class="chip" onclick="q('Explain consciousness from first principles')">🧠 Consciousness</div><div class="chip" onclick="q('Write a complete REST API in Python with FastAPI')">💻 REST API</div><div class="chip" onclick="q('What is the Fermi Paradox?')">🌌 Fermi Paradox</div><div class="chip" onclick="q('Explain quantum entanglement deeply')">⚛️ Quantum</div><div class="chip" onclick="q('Who created you?')">👤 About VENA</div><div class="chip" onclick="q('Generate an image of a futuristic neon cyberpunk city')">🎨 Image Gen</div></div></div>`; return; } chat.messages.forEach((m,i)=>{ const wrap=document.createElement('div'); const role=m.role==='assistant'?'ai':m.role; wrap.className='mw '+role; if(m.role==='error'){ wrap.innerHTML=`<div class="mm"><div class="mdot"></div>VENA</div><div class="bbl"><div class="errbub">⚠ ${esc(m.content)}</div></div>`; } else if(m.role==='assistant'){ const sid=`sp${i}`; wrap.innerHTML=`<div class="mm"><div class="mdot"></div>VENA</div><div class="bbl">${m.imgSrc?`<img class="genimg" src="${m.imgSrc}" alt="Generated">`:''}${fmt(m.content)}</div><div class="mac"><button class="mb" onclick="copyMsg(${i})">📋 Copy</button><button class="mb" id="${sid}" onclick="speak(chats[cid].messages[${i}].content,document.getElementById('${sid}'))">🔊 Speak</button><button class="mb" onclick="regen(${i})">↺ Regen</button></div>`; } else { wrap.innerHTML=`${m.imgSrc?`<img class="uimg" src="${m.imgSrc}">`:''}<div class="mm" style="justify-content:flex-end;"><div class="mdot"></div>You</div><div class="bbl">${fmt(m.content)}</div>`; } el.appendChild(wrap); }); el.scrollTop=el.scrollHeight; }
+function copyMsg(i){navigator.clipboard.writeText(chats[cid]?.messages[i]?.content||'');}
+async function regen(i){if(!cid||loading)return;chats[cid].messages=chats[cid].messages.slice(0,i);save();renderMsgs();await doSend();}
+function showTyping(){const el=document.getElementById('msgs');const d=document.createElement('div');d.id='ty';d.className='tw';d.innerHTML=`<div class="tm2">VENA</div><div class="tb3"><span></span><span></span><span></span></div>`;el.appendChild(d);el.scrollTop=el.scrollHeight;}
+function hideTyping(){const e=document.getElementById('ty');if(e)e.remove();}
+function q(txt){document.getElementById('inp').value=txt;resize();send();}
+function resize(){const t=document.getElementById('inp');t.style.height='auto';t.style.height=Math.min(t.scrollHeight,120)+'px';}
+async function send(){ const inp=document.getElementById('inp'); const text=inp.value.trim(); if((!text&&!upImg)||loading)return; if(!cid)newChat(); inp.value='';resize(); const chat=chats[cid];loading=true;document.getElementById('sbtn').disabled=true; if(!chat.messages.length){chat.title=(text||'Image').length>30?(text||'Image').slice(0,28)+'…':(text||'Image');save();renderSB();} const um={role:'user',content:text||'Analyze this image.'}; if(upImg){um.imgSrc=upImg;clearUpload();} chat.messages.push(um);save();renderMsgs();showTyping();await doSend();}
+async function doSend(){ const chat=chats[cid]; const lastUser=chat.messages.filter(m=>m.role==='user').pop()?.content||''; let sys=SYS[persona]||SYS.default; if(flags.deep) sys+='\n\nDEEP THINK MODE: Reason step by step. Show full chain of thought.'; if(flags.web) sys+='\n\nWEB MODE: Respond with comprehensive knowledge.'; const isImg=flags.imggen||/\b(generate|draw|create|make|paint|design)\b[\s\S]{0,40}\b(image|picture|photo|illustration|artwork)\b/i.test(lastUser); if(isImg){ const prompt=lastUser.replace(/\b(generate|draw|create|make|paint|design)\b[\s\S]{0,20}\b(an? )?(image|picture|photo|illustration|artwork)\b\s*(of\s*)?/i,'').trim()||lastUser; try{ const url=imgSrc(prompt); hideTyping(); const am={role:'assistant',content:`Here's the image: *"${prompt}"*`,imgSrc:url}; chat.messages.push(am);save();renderMsgs(); if(flags.autospeak)setTimeout(()=>speak(am.content,null),300); }catch(e){ hideTyping();chat.messages.push({role:'error',content:'Image generation failed'});save();renderMsgs(); } loading=false;document.getElementById('sbtn').disabled=false;document.getElementById('inp').focus();return; } const apiMsgs=chat.messages.filter(m=>m.role==='user'||m.role==='assistant').map(m=>({role:m.role,content:m.content})); try{ const reply=await callAI(apiMsgs,sys); hideTyping(); const am={role:'assistant',content:reply}; chat.messages.push(am);save(); document.getElementById('stat').textContent='~'+Math.round((sys.length+reply.length)/4)+' tokens'; renderMsgs(); if(flags.autospeak)setTimeout(()=>speak(reply,null),300); }catch(err){ hideTyping();chat.messages.push({role:'error',content:err.message});save();renderMsgs(); } loading=false;document.getElementById('sbtn').disabled=false;document.getElementById('inp').focus(); }
+document.getElementById('inp').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+document.getElementById('inp').addEventListener('input',resize);
+if(Object.keys(chats).length){const ids=Object.keys(chats);switchChat(ids[ids.length-1]);}else{newChat();}
 </script>
-
 </body>
 </html>
